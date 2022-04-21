@@ -8,7 +8,8 @@ import javax.persistence.Id;
 
 
 @Entity // Usiamo la notazione @Entity per indicare la classe Gioco come oggetto
-public class Gioco {
+public class Gioco 
+{
 
 	// con queste notazioni gli diciamo che è un ID ed è primary e autogenerato
 	// Long come int ma più big
@@ -24,7 +25,8 @@ public class Gioco {
 	
 	
 	public Gioco(String titolo, LocalDate dataUscita, String serie, int pegi, Long iDPiattaforma, Long iDGenere,
-			Long iDSviluppatore, Long iDEditor) {
+			Long iDSviluppatore, Long iDEditor) 
+	{
 		super();
 		this.titolo = titolo;
 		this.dataUscita = dataUscita;
@@ -36,98 +38,134 @@ public class Gioco {
 		IDEditor = iDEditor;
 	}
 
-	public Gioco() {
+	public Gioco() 
+	{
 		
 	}
 
-	public Long getIDGioco() {
+	public Long getIDGioco() 
+	{
 		return IDGioco;
 	}
 
 
-	public void setIDGioco(Long iDGioco) {
+	public void setIDGioco(Long iDGioco) 
+	{
 		IDGioco = iDGioco;
 	}
 
 
-	public String getTitolo() {
+	public String getTitolo()
+{
 		return titolo;
 	}
 
 
-	public void setTitolo(String titolo) {
+	public void setTitolo(String titolo)
+	{
 		this.titolo = titolo;
 	}
 
 
-	public LocalDate getDataUscita() {
+	public LocalDate getDataUscita() 
+	{
 		return dataUscita;
 	}
 
 
-	public void setDataUscita(LocalDate dataUscita) {
+	public void setDataUscita(LocalDate dataUscita) 
+	{
 		this.dataUscita = dataUscita;
 	}
 
 
-	public String getSerie() {
+	public String getSerie() 
+	{
 		return serie;
 	}
 
 
-	public void setSerie(String serie) {
+	public void setSerie(String serie) 
+	{
 		this.serie = serie;
 	}
 
 
-	public int getPegi() {
+	public int getPegi()
+	{
 		return pegi;
 	}
 
 
-	public void setPegi(int pegi) {
+	public void setPegi(int pegi) 
+	{
 		this.pegi = pegi;
 	}
 
 
-	public Long getIDPiattaforma() {
+	public Long getIDPiattaforma() 
+	{
 		return IDPiattaforma;
 	}
 
 
-	public void setIDPiattaforma(Long iDPiattaforma) {
+	public void setIDPiattaforma(Long iDPiattaforma)
+	{
 		IDPiattaforma = iDPiattaforma;
 	}
 
 
-	public Long getIDGenere() {
+	public Long getIDGenere() 
+	{
 		return IDGenere;
 	}
 
 
-	public void setIDGenere(Long iDGenere) {
+	public void setIDGenere(Long iDGenere) 
+	{
 		IDGenere = iDGenere;
 	}
 
 
-	public Long getIDSviluppatore() {
+	public Long getIDSviluppatore() 
+	{
 		return IDSviluppatore;
 	}
 
 
-	public void setIDSviluppatore(Long iDSviluppatore) {
+	public void setIDSviluppatore(Long iDSviluppatore) 
+	{
 		IDSviluppatore = iDSviluppatore;
 	}
 
 
-	public Long getIDEditor() {
+	public Long getIDEditor() 
+	{
 		return IDEditor;
 	}
 
 
-	public void setIDEditor(Long iDEditor) {
+	public void setIDEditor(Long iDEditor)
+	{
 		IDEditor = iDEditor;
 	}
+
+	@Override
+	public String toString() 
+	{
+		return 
+				super.toString() +
+				"IDGioco: " 		+ IDGioco 		 + "\n" +
+				"Titolo: " 			+ titolo 		 + "\n" + 
+				"Data Uscita: " 	+ dataUscita 	 + "\n" +
+				"Serie: " 			+ serie 		 + "\n" +
+				"Pegi: " 			+ pegi 			 + "\n" + 
+				"IDPiattaforma: "   + IDPiattaforma  + "\n" +
+				"IDGenere: " 		+ IDGenere 		 + "\n" + 
+				"IDSviluppatore: "  + IDSviluppatore + "\n" + 
+				"IDEditor: " 		+ IDEditor   	 + "\n" ;
+	}
+	
 	
 	
 	
