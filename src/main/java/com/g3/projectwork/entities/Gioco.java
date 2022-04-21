@@ -22,6 +22,7 @@ public class Gioco {
 	private Long IDSviluppatore;
 	private Long IDEditor;
 	
+	
 	public Gioco(String titolo, LocalDate dataUscita, String serie, int pegi, Long iDPiattaforma, Long iDGenere,
 			Long iDSviluppatore, Long iDEditor) {
 		super();
@@ -43,72 +44,91 @@ public class Gioco {
 		return IDGioco;
 	}
 
+
 	public void setIDGioco(Long iDGioco) {
 		IDGioco = iDGioco;
 	}
+
 
 	public String getTitolo() {
 		return titolo;
 	}
 
+
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
+
 
 	public LocalDate getDataUscita() {
 		return dataUscita;
 	}
 
+
 	public void setDataUscita(LocalDate dataUscita) {
 		this.dataUscita = dataUscita;
 	}
+
 
 	public String getSerie() {
 		return serie;
 	}
 
+
 	public void setSerie(String serie) {
 		this.serie = serie;
 	}
+
 
 	public int getPegi() {
 		return pegi;
 	}
 
+
 	public void setPegi(int pegi) {
 		this.pegi = pegi;
 	}
+
 
 	public Long getIDPiattaforma() {
 		return IDPiattaforma;
 	}
 
+
 	public void setIDPiattaforma(Long iDPiattaforma) {
 		IDPiattaforma = iDPiattaforma;
 	}
+
 
 	public Long getIDGenere() {
 		return IDGenere;
 	}
 
+
 	public void setIDGenere(Long iDGenere) {
 		IDGenere = iDGenere;
 	}
+
 
 	public Long getIDSviluppatore() {
 		return IDSviluppatore;
 	}
 
+
 	public void setIDSviluppatore(Long iDSviluppatore) {
 		IDSviluppatore = iDSviluppatore;
 	}
+
 
 	public Long getIDEditor() {
 		return IDEditor;
 	}
 
+
 	public void setIDEditor(Long iDEditor) {
 		IDEditor = iDEditor;
 	}
+	
+	
 	
 }

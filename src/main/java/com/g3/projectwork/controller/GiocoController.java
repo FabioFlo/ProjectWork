@@ -20,25 +20,25 @@ public class GiocoController {
 	GiocoController(GiocoRepository repository) {
 		giocoRepository = repository;
 	}
-	//LIST
+	
 	// metodo per la lista giochi
 	@GetMapping("/giochi")
 	Iterable<Gioco> getGiochi(){
 		return giocoRepository.findAll();
 	}
-	//READ SINGOLO
+	
 	// metodo per un solo gioco
 	@GetMapping("/giochi/{IDGioco}")
 	Gioco getGioco(@PathVariable Long IDGioco) {
 		return giocoRepository.findById(IDGioco).orElseThrow();
 	}
-	//CREATE
+	
 	// metodo per creare un gioco
 	@PostMapping("/giochi")
 		Gioco createGioco(@RequestBody Gioco newGioco) {
 		return giocoRepository.save(newGioco);
 	}
-	//UPDATE
+	
 	// metodo per aggiornare
 	@PutMapping("/giochi/{IDGioco}")
 	Gioco updateGioco(@PathVariable Long IDGioco, @RequestBody Gioco giocoDTO) {
@@ -53,7 +53,7 @@ public class GiocoController {
 		giocoDaAggiornare.setTitolo(giocoDTO.getTitolo());
 		return giocoRepository.save(giocoDaAggiornare);
 	}
-	//DELETE
+	
 	// metodo per eliminare
 	@DeleteMapping("/giochi/{IDGioco}")
 	void deletGioco(@PathVariable Long IDGioco) {
