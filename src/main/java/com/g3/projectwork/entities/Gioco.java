@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-
 @Entity // Usiamo la notazione @Entity per indicare la classe Gioco come oggetto
 public class Gioco {
 
@@ -21,7 +20,7 @@ public class Gioco {
 	private Long IDGenere;
 	private Long IDSviluppatore;
 	private Long IDEditor;
-	
+
 	public Gioco(String titolo, LocalDate dataUscita, String serie, int pegi, Long iDPiattaforma, Long iDGenere,
 			Long iDSviluppatore, Long iDEditor) {
 		super();
@@ -36,7 +35,7 @@ public class Gioco {
 	}
 
 	public Gioco() {
-		
+
 	}
 
 	public Long getIDGioco() {
@@ -56,6 +55,7 @@ public class Gioco {
 	}
 
 	public LocalDate getDataUscita() {
+
 		return dataUscita;
 	}
 
@@ -110,5 +110,5 @@ public class Gioco {
 	public void setIDEditor(Long iDEditor) {
 		IDEditor = iDEditor;
 	}
-	
+
 }
