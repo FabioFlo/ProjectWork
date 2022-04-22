@@ -1,8 +1,11 @@
 package com.g3.projectwork.entities;
 
+import javax.persistence.Column;
+
 public class Sviluppatori 
 {
 	private Long IDSviluppatore;
+	 @Column(unique = true)
 	private String NomeSviluppatore;
 	
 	

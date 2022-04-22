@@ -1,8 +1,11 @@
 package com.g3.projectwork.entities;
 
+import javax.persistence.Column;
+
 public class Editor 
 {
 	private Long IDEditor;
+	 @Column(unique = true)
 	private String NomeEditor;
 	
 	

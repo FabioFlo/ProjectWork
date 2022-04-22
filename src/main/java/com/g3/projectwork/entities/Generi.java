@@ -1,8 +1,11 @@
 package com.g3.projectwork.entities;
 
+import javax.persistence.Column;
+
 public class Generi 
 {
 	private Long IDGenere;
+	 @Column(unique = true)
 	private String Genere;
 	
 	public Generi(Long iDGenere, String genere) 
