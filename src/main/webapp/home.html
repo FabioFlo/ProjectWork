@@ -10,11 +10,20 @@
 			<input type="submit" value="Lista Giochi"/>
 		</form>
 		
-		<!--  FIXME, non funziona -->
-		<form method="get" action="/giochi/{IDGioco}">
-			ID: <input type="number" name="IDGioco">
-			<br>
+		<hr>
+		
+		<form method="get" action="/singoloGioco">
+			ID: <input type="number" name="IDGioco"><br>
 			<input type="submit" value="CERCA">
+		</form>
+		
+		<hr>
+		
+		<a href="formnuovogioco.html">Aggiungi Nuovo Gioco</a>
+		
+		<form method="get" action="/singoloGioco">
+			ID: <input type="number" name="IDGioco"><br>
+			<input type="submit" value="ELIMINA GIOCO">
 		</form>
 		
 	</body>
