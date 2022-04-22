@@ -4,7 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.g3.projectwork.entities.Editor;
 
-public interface EditorRepository extends CrudRepository<Editor, Long>
-{
+public interface EditorRepository extends CrudRepository<Editor, Long>{
 
 }
