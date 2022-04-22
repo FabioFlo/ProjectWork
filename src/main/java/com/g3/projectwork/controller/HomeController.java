@@ -28,7 +28,7 @@ public class HomeController {
 		
 		return "home.html";
 	}
-	
+
 	@GetMapping("/formlogin")
 	public String formLogin() {
 		return "formlogin.html";

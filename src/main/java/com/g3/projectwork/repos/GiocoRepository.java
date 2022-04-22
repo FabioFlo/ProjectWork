@@ -1,5 +1,8 @@
 package com.g3.projectwork.repos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 
 import com.g3.projectwork.entities.Gioco;
