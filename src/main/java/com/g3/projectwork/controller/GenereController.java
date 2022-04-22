@@ -42,7 +42,7 @@ private final GenereRepository genereRepository;
 	@PutMapping("/genere/{IDGenere}")
 	Genere updateGenere(@PathVariable Long IDGenere, @RequestBody Genere genereDTO) {
 		Genere genereDaAggiornare = genereRepository.findById(IDGenere).orElseThrow();
-		genereDaAggiornare.set
+		//genereDaAggiornare.set
 		return genereRepository.save(genereDaAggiornare);
 	}
 	

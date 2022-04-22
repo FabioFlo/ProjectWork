@@ -2,14 +2,14 @@ package com.g3.projectwork.entities;
 
 import javax.persistence.Column;
 
-public class Sviluppatori 
+public class Sviluppatore 
 {
 	private Long IDSviluppatore;
 	 @Column(unique = true)
 	private String NomeSviluppatore;
 	
 	
-	public Sviluppatori(Long iDSviluppatore, String nomeSviluppatore) 
+	public Sviluppatore(Long iDSviluppatore, String nomeSviluppatore) 
 	{
 		super();
 		IDSviluppatore = iDSviluppatore;

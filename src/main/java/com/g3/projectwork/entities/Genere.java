@@ -2,13 +2,13 @@ package com.g3.projectwork.entities;
 
 import javax.persistence.Column;
 
-public class Generi 
+public class Genere 
 {
 	private Long IDGenere;
 	 @Column(unique = true)
 	private String Genere;
 	
-	public Generi(Long iDGenere, String genere) 
+	public Genere(Long iDGenere, String genere) 
 	{
 		super();
 		IDGenere = iDGenere;

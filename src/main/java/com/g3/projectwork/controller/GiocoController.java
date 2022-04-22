@@ -60,11 +60,6 @@ public class GiocoController {
 		return giocoRepository.findById(IDGioco).orElseThrow();
 	}
 	
-	@GetMapping("/singoloGioco")
-	public String giocoSingolo() {
-		return gestore.graficaGioco(getGiocoSingolo(IDGioco));
-	}
-	
 	
 	//TODO
 	//CREATE gioco

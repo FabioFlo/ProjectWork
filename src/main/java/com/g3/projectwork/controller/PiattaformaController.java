@@ -41,7 +41,7 @@ public class PiattaformaController {
 	@PutMapping("/piattaforme/{IDPiattaforma}")
 	Piattaforma updatePiattaforma(@PathVariable Long IDPiattaforma, @RequestBody Piattaforma piattaformaDTO) {
 		Piattaforma piattaformaDaAggiornare = piattaformaRepository.findById(IDPiattaforma).orElseThrow();
-		piattaformaDaAggiornare.set
+		//piattaformaDaAggiornare.set
 		return piattaformaRepository.save(piattaformaDaAggiornare);
 	}
 	
