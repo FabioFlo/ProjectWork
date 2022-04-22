@@ -32,26 +32,25 @@ public class PiattaformaController {
 		return piattaformaRepository.findById(IDPiattaforma).orElseThrow();
 	}
 	
-	//create
+	//create piattaforma
 	@PostMapping("/piattaforme")
 	Piattaforma createPiattaforma(@RequestBody Piattaforma newPiattaforma) {
 		return piattaformaRepository.save(newPiattaforma);
 	}
 	
-	//TODO mo lo finisco appena ho le entities (Piattaforma)
-	//update
+	//update piattaforma
 	@PutMapping("/piattaforme/{IDPiattaforma}")
 	Piattaforma updatePiattaforma(@PathVariable Long IDPiattaforma, @RequestBody Piattaforma piattaformaDTO) {
 		Piattaforma piattaformaDaAggiornare = piattaformaRepository.findById(IDPiattaforma).orElseThrow();
-		//piattaformaDaAggiornare.set
+		piattaformaDaAggiornare.setIDPiattaforma(piattaformaDTO.getIDPiattaforma());
+		piattaformaDaAggiornare.setPiattaforma(piattaformaDTO.getPiattaforma());
 		return piattaformaRepository.save(piattaformaDaAggiornare);
 	}
 	
-	//delete
+	//delete piattaforma
 	@DeleteMapping("/piattaforme/{IDPiattaforma}")
 	void deletePiattaforma(@PathVariable Long IDPiattaforma) {
 		Piattaforma piattaforma = piattaformaRepository.findById(IDPiattaforma).orElseThrow();
 		piattaformaRepository.delete(piattaforma);
 	}
-	
 }
