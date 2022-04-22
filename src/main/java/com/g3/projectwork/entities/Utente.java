@@ -11,23 +11,33 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table // indica che si tratta di una tabella 
 public class Utente {
-	@Id
+	@Id // diciamo inoltre che l'IDUtente è un id
 	@SequenceGenerator(
+			// diamo il nome che fa riferimento alla sequenza
 			name = "utente_sequence", 
 			sequenceName = "utente_sequence", 
+			// ogni volta che viene inserito un nuovo utente
+			// l'id aumenta di 1
 			allocationSize = 1
 			)
 	@GeneratedValue(
+			// Con strategy indichiamo il tipo di azione che verrà eseguita
+			// per generare la chiave primaria dell'@Entity
 			strategy = GenerationType.SEQUENCE,
+			// inidichiamo il nome a cui stiamo facendo riferimento
 			generator = "utente_sequence"
 			)
 	private Long IDUtente;
-	@Column(unique = true)
+	// questa annotazione marchia come unico il valore
+	// al momento della creazione della tabella, userName sarà unique
+	@Column(unique = true) 
 	private String userName;
+	
 	@Column(unique = true)
 	private String emailAddress;
+	
 	private String pword;
 	private String bio;
 	private LocalDate dataIscrizione;
