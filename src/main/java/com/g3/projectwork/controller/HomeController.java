@@ -27,23 +27,25 @@ public class HomeController {
 		
 		return "home.html";
 	}
-
+	/*
+	 * SEZIONE LOGIN
+	 * 
+	 * 
+	 */
 	@GetMapping("/formlogin")
 	public String formLogin() {
 		return "formlogin.html";
 	}
-	
 	@GetMapping("/login")
 	public String login(@RequestParam("email") String email,
 						@RequestParam("password") String p,	
 						HttpSession session)
 	{
-		//if user e p combaciano con anagrafica utente
-		//session.setAttribute("login", "Ok");
-		//session.setAttribute("username", user);
+
+		//TODO: CHECK WITH DATABASE IF VALID ELSE REDIRECT TO REGISTER
 		if(p!=null && email!=null)
 			session.setAttribute("login", "Ok");
-			System.out.println(email + p);
+			System.out.println(email + " " + p);
 		
 		return "redirect:/";
 		//Altrimenti rimandi a form settando false come fattore pagina
@@ -57,6 +59,22 @@ public class HomeController {
 		session.setAttribute("password", null);
 		
 		return "redirect:/formlogin";
+	}
+	/*
+	 * SEZIONE REGISTRAZIONE
+	 * 
+	 */
+	@GetMapping("/formregistrazione")
+	public String formRegistrazione() {
+		return "formregistrazione.html";
+	}
+	@GetMapping("/registrazione")
+	public String signUp(@RequestParam("username") String userName,
+						 @RequestParam("email") String email,
+						 @RequestParam("password") String password
+						 
+			) {
+		return "";
 	}
 	
 }
