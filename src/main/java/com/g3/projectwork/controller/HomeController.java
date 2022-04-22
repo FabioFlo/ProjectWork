@@ -72,9 +72,17 @@ public class HomeController {
 	@GetMapping("/registrazione")
 	public String signUp(@RequestParam("username") String userName,
 						 @RequestParam("email") String email,
-						 @RequestParam("password") String password
-						 
+						 @RequestParam("password") String password,
+						 @RequestParam("checkpassword") String checkPassword,
+						 @RequestParam("acceptterms") boolean acceptterms
 			) {
+		if(password.contentEquals(checkPassword) && !(password.isBlank() || password.isEmpty())) {
+			if(acceptterms) {
+				if(!(userName.isBlank() || userName.isEmpty())){
+					
+				}
+			}
+		}
 		return "";
 	}
 	

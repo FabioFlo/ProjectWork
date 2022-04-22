@@ -1,4 +1,5 @@
 package com.g3.projectwork.controller;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.g3.projectwork.entities.Gioco;
 import com.g3.projectwork.repos.GiocoRepository;
@@ -49,26 +51,36 @@ public class GiocoController {
 		getGiochi().iterator().hasNext();
 		return gestore.graficaElenco(getGiochi());
 	}
-	
-	
-	
-	
-	
-	//TODO
+
+	//TODO: Graficare gioco ritornato
 	//READ Singolo gioco
-	@GetMapping("/giochi/{IDGioco}")
-	Gioco getGiocoSingolo(@PathVariable Long IDGioco) {
+	@GetMapping("/singoloGioco")
+	Gioco getGiocoSingolo(@RequestParam("IDGioco") Long IDGioco) {
 		return giocoRepository.findById(IDGioco).orElseThrow();
 	}
 	
+//	//CREATE gioco
+//	@PostMapping("/crea")
+//		Gioco createGioco(@RequestBody Gioco newGioco) {
+//		return giocoRepository.save(newGioco);
+//	}
 	
-	//TODO
+	//FIXME: Whitelabel error sul submit di "formnuovogioco.html"
 	//CREATE gioco
-	@PostMapping("/giochi")
-		Gioco createGioco(@RequestBody Gioco newGioco) {
-		return giocoRepository.save(newGioco);
+	@GetMapping("/creaGioco")
+		Gioco createGiocoNuovo( @RequestParam("titolo") String titolo,
+								@RequestParam("IDSviluppatore") Long IDSviluppatore,
+								@RequestParam("IDEditor") Long IDEditor,
+								@RequestParam("IDGenere") Long IDGenere,
+								@RequestParam("IDPiattaforma") Long IDPiattaforma,
+								@RequestParam("dataUscita") LocalDate dataUscita,
+								@RequestParam("pegi") int pegi,
+								@RequestParam("serie") String serie) {
+		Gioco giocoNuovo = new Gioco(titolo, dataUscita, serie, pegi, IDPiattaforma, IDGenere, IDSviluppatore, IDEditor);
+		System.out.println(true);
+		return giocoRepository.save(giocoNuovo);
 	}
-	
+		
 	//TODO
 	//UPDATE
 	@PutMapping("/giochi/{IDGioco}")
@@ -85,10 +97,9 @@ public class GiocoController {
 		return giocoRepository.save(giocoDaAggiornare);
 	}
 	
-	//TODO
 	//DELETE
-	@DeleteMapping("/giochi/{IDGioco}")
-	void deletGioco(@PathVariable Long IDGioco) {
+	@GetMapping("/eliminaGioco")
+	void deleteGioco(@RequestParam("IDGioco") Long IDGioco) {
 		Gioco gioco = giocoRepository.findById(IDGioco).orElseThrow();
 		giocoRepository.delete(gioco);
 	}

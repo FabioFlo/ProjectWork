@@ -1,22 +1,29 @@
-<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="ISO-8859-1">
-		<title>NerdPlanet</title>
-	</head>
-	<body>
-		<h1>NERDPLANET</h1>
-		<form method="get" action="/elencoGiochi">
-			<input type="submit" value="Lista Giochi"/>
-		</form>
-		
-		<!--  FIXME, non funziona -->
-		<form method="get" action="/giochi/{IDGioco}">
-			ID: <input type="number" name="IDGioco">
-			<br>
-			<input type="submit" value="CERCA">
-		</form>
-		
-	</body>
-</html>
+    <head>
+        <meta charset="ISO-8859-1">
+        <title>NerdPlanet</title>
+    </head>
+    <body>
+        <h1>NERDPLANET</h1>
+        <form method="get" action="/elencoGiochi">
+            <input type="submit" value="Lista Giochi"/>
+        </form>
 
+        <hr>
+
+        <form method="get" action="/singoloGioco">
+            ID: <input type="number" name="IDGioco"><br>
+            <input type="submit" value="CERCA">
+        </form>
+
+        <hr>
+
+        <a href="formnuovogioco.html">Aggiungi Nuovo Gioco</a>
+
+        <form method="get" action="/eliminaGioco">
+            ID: <input type="number" name="IDGioco"><br>
+            <input type="submit" value="ELIMINA GIOCO">
+        </form>
+
+    </body>
+</html>
