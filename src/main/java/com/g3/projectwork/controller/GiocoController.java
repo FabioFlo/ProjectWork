@@ -69,7 +69,7 @@ public class GiocoController {
 	
 	//FIXME: Whitelabel error sul submit di "formnuovogioco.html"
 	//CREATE gioco
-	@PostMapping("/creaGioco")
+	@GetMapping("/creaGioco")
 		Gioco createGiocoNuovo( @RequestParam("titolo") String titolo,
 								@RequestParam("IDSviluppatore") Long IDSviluppatore,
 								@RequestParam("IDEditor") Long IDEditor,
@@ -101,8 +101,8 @@ public class GiocoController {
 	
 	//TODO
 	//DELETE
-	@DeleteMapping("/eliminaGioco")
-	void deletGioco(@RequestParam("IDGioco") Long IDGioco) {
+	@GetMapping("/eliminaGioco")
+	void deleteGioco(@RequestParam("IDGioco") Long IDGioco) {
 		Gioco gioco = giocoRepository.findById(IDGioco).orElseThrow();
 		giocoRepository.delete(gioco);
 	}
