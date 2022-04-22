@@ -35,7 +35,7 @@ public class HomeController {
 	}
 	
 	@GetMapping("/login")
-	public String login(@RequestParam("username") String user,
+	public String login(@RequestParam("email") String email,
 						@RequestParam("password") String p,	
 						HttpSession session)
 	{

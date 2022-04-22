@@ -1,23 +1,70 @@
-<form action="action_page.php" method="post">
-  <div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-  </div>
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+<!-- Bootstrap CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+<title>Login Form</title>
+</head>
+<body>
+	<section class="Form my-4 mx-5">
+		<div class="container">
+			<div class="row no-gutters">
+				<div class="col-lg-5">
+					<img src="./LoginImagejpg" class="img-fluid" alt="">
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+				</div>
+				<div class="col-lg-7">
+					<form action="/login" id = "form1">
 
-    <button type="submit">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
-  </div>
+						<!-- Sezione Email -->
+						<div class="form-row">
+							<div class="col-lg-7">
+								<input type="email" placeholder="Email-Address"
+									class="form-control" name = "email">
+							</div>
+						</div>
 
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
-</form>
+						<!-- Sezione Password -->
+						<div class="form-row">
+							<div class="col-lg-7">
+								<input type="password" placeholder="*********"
+									class="form-control" name = "password">
+							</div>
+						</div>
+
+						<!-- Sezione Bottone -->
+						<div class="form-row">
+							<div class="col-lg-7">
+								<button type="submit" class="btn-1" form = "form1">Login</button>
+							</div>
+						</div>
+						
+						<!-- Sezione Forgot - Register -->
+						<a href = "/formpassdimenticata.html">Forgot password</a>
+						<p>Don't have an account?
+							<a href= "/formregistrazione.html">Register Here!</a>
+						</p>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- FILE GENERATO DALLA GET STARTED DI BOOTSTRAP; 
+	VEDI LI LE OPZIONI -->
+	<!-- Optional JavaScript; choose one of the two! -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+
+</body>
+</html>
