@@ -43,6 +43,9 @@ public class Utente {
 	private LocalDate dataIscrizione;
 	private LocalDate dataCompleanno;
 	
+	public Utente() {
+		
+	}
 	public Utente(Long iDUtente, String userName, String emailAddress, String pword, String bio,
 			LocalDate dataIscrizione, LocalDate dataCompleanno) {
 		super();

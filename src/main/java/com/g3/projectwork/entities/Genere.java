@@ -21,7 +21,9 @@ public class Genere
 	private Long IDGenere;
 	 @Column(unique = true)
 	private String Genere;
-	
+	public Genere() {
+		
+	}
 	public Genere(Long iDGenere, String genere) 
 	{
 		super();

@@ -48,7 +48,7 @@ public class PiattaformaController {
 	}
 	
 	//delete
-	@DeleteMapping("/piattaforme/{IDPiattaforma")
+	@DeleteMapping("/piattaforme/{IDPiattaforma}")
 	void deletePiattaforma(@PathVariable Long IDPiattaforma) {
 		Piattaforma piattaforma = piattaformaRepository.findById(IDPiattaforma).orElseThrow();
 		piattaformaRepository.delete(piattaforma);

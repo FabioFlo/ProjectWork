@@ -24,7 +24,9 @@ public class Sviluppatore
 	 @Column(unique = true)
 	private String NomeSviluppatore;
 	
-	
+	public Sviluppatore() {
+		
+	}
 	public Sviluppatore(Long iDSviluppatore, String nomeSviluppatore) 
 	{
 		super();

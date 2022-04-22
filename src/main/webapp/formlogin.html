@@ -22,13 +22,13 @@
 
 				</div>
 				<div class="col-lg-7">
-					<form action="/login" id = "form1">
+					<form action="/login" method="get" id="form1">
 
 						<!-- Sezione Email -->
 						<div class="form-row">
 							<div class="col-lg-7">
 								<input type="email" placeholder="Email-Address"
-									class="form-control" name = "email">
+									class="form-control" name="email">
 							</div>
 						</div>
 
@@ -36,24 +36,26 @@
 						<div class="form-row">
 							<div class="col-lg-7">
 								<input type="password" placeholder="*********"
-									class="form-control" name = "password">
+									class="form-control" name="password">
 							</div>
 						</div>
-
-						<!-- Sezione Bottone -->
-						<div class="form-row">
-							<div class="col-lg-7">
-								<button type="submit" class="btn-1" form = "form1">Login</button>
-							</div>
-						</div>
-						
-						<!-- Sezione Forgot - Register -->
-						<a href = "/formpassdimenticata.html">Forgot password</a>
-						<p>Don't have an account?
-							<a href= "/formregistrazione.html">Register Here!</a>
-						</p>
-						
 					</form>
+					
+					<!-- Sezione Bottone -->
+					<div class="form-row">
+						<div class="col-lg-7">
+							<button type="submit" class="btn-1" form="form1">Login</button>
+						</div>
+					</div>
+
+					<!-- Sezione Forgot - Register -->
+					<a href="/formpassdimenticata.html">Forgot password</a>
+					<p>
+						Don't have an account? <a href="/formregistrazione.html">Register
+							Here!</a>
+					</p>
+
+
 				</div>
 			</div>
 		</div>

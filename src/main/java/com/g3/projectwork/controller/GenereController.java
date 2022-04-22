@@ -48,7 +48,7 @@ private final GenereRepository genereRepository;
 	}
 	
 	//delete
-	@DeleteMapping("/genere/{IDGenere")
+	@DeleteMapping("/genere/{IDGenere}")
 	void deleteGenere(@PathVariable Long IDGenere) {
 		Genere genere = genereRepository.findById(IDGenere).orElseThrow();
 		genereRepository.delete(genere);

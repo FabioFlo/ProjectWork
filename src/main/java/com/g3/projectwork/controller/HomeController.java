@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HomeController {
 	
 	@GetMapping("/test")
-	
 	@ResponseBody
 	public String test() {
 		return "Benvenuto sul sito";
@@ -42,6 +41,10 @@ public class HomeController {
 		//if user e p combaciano con anagrafica utente
 		//session.setAttribute("login", "Ok");
 		//session.setAttribute("username", user);
+		if(p!=null && email!=null)
+			session.setAttribute("login", "Ok");
+			System.out.println(email + p);
+		
 		return "redirect:/";
 		//Altrimenti rimandi a form settando false come fattore pagina
 	}
@@ -50,6 +53,9 @@ public class HomeController {
 	public String logout(HttpSession session) {
 		session.setAttribute("login", null);
 		session.setAttribute("username", null);
+		session.setAttribute("email", null);
+		session.setAttribute("password", null);
+		
 		return "redirect:/formlogin";
 	}
 	

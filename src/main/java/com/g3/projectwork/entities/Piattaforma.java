@@ -24,7 +24,9 @@ public class Piattaforma
 	private Long IDPiattaforma;
 	 @Column(unique = true)
 	private String Piattaforma;
-	
+	public Piattaforma() {
+		
+	}
 	public Piattaforma(Long iDPiattaforma, String piattaforma)
 	{
 		super();

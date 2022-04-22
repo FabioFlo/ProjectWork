@@ -24,7 +24,9 @@ public class Editor
 	 @Column(unique = true)
 	private String NomeEditor;
 	
-	
+	public Editor() {
+		
+	}
 	public Editor(Long iDEditor, String nomeEditor) 
 	{
 		super();

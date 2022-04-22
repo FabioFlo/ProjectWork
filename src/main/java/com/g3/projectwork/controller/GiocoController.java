@@ -21,6 +21,7 @@ public class GiocoController {
 	private final GiocoRepository giocoRepository;
 	
 	//Percorso Locale views
+	//FIXME: SETTARE UN PATH RELATIVO ALLA CARTELLA DELL'APPLICAZIONE E NON RELATIVO AL DISCO
 	String percorsoCartellaViste = "D:\\Marco\\Marco - DRIVE\\JAITA50\\ProjectWork\\ProjectWork\\src\\main\\webapp\\";
 	
 	GestoreTemplate gestore = new GestoreTemplate(percorsoCartellaViste);
