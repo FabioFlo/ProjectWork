@@ -68,6 +68,7 @@ public class HomeController {
 	public String formRegistrazione() {
 		return "formregistrazione.html";
 	}
+	//TODO: FINISH THIS
 	@GetMapping("/registrazione")
 	public String signUp(@RequestParam("username") String userName,
 						 @RequestParam("email") String email,
