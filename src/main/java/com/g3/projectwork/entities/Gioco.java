@@ -4,7 +4,9 @@ import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 
 @Entity // Usiamo la notazione @Entity per indicare la classe Gioco come oggetto
@@ -13,7 +15,17 @@ public class Gioco
 
 	// con queste notazioni gli diciamo che è un ID ed è primary e autogenerato
 	// Long come int ma più big
-	private @Id @GeneratedValue Long IDGioco;
+	@Id @SequenceGenerator(
+			name = "gioco_sequence",
+			sequenceName = "gioco_sequence",
+			allocationSize = 1
+			)
+	
+	@GeneratedValue(
+			strategy = GenerationType.SEQUENCE,
+			generator = "gioco_sequence"
+			)
+	private Long IDGioco;
 	private String titolo;
 	private LocalDate dataUscita;
 	private String serie;

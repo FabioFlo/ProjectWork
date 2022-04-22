@@ -1,9 +1,25 @@
 package com.g3.projectwork.entities;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
+@Entity
 public class Editor 
 {
+	@Id 
+	@SequenceGenerator(
+	name = "editor_sequence",
+	sequenceName = "editor_sequence",
+	allocationSize = 1
+	)
+	@GeneratedValue(
+			strategy = GenerationType.SEQUENCE,
+			generator = "editor_sequence"
+			)
 	private Long IDEditor;
 	 @Column(unique = true)
 	private String NomeEditor;

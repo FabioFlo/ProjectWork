@@ -1,5 +1,8 @@
 package com.g3.projectwork.controller;
 
-public class SviluppatoreController {
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
+public class SviluppatoreController {
+	//TODO: FINIRE
 }
