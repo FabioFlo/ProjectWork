@@ -3,13 +3,13 @@ package com.g3.projectwork.entities;
 import javax.persistence.Column;
 
 
-public class Piattaforme
+public class Piattaforma
 {
 	private Long IDPiattaforma;
 	 @Column(unique = true)
 	private String Piattaforma;
 	
-	public Piattaforme(Long iDPiattaforma, String piattaforma)
+	public Piattaforma(Long iDPiattaforma, String piattaforma)
 	{
 		super();
 		IDPiattaforma = iDPiattaforma;
