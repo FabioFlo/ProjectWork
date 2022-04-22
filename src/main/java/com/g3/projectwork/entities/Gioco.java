@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 @Entity // Usiamo la notazione @Entity per indicare la classe Gioco come oggetto
 public class Gioco {
-
+ 
 	// con queste notazioni gli diciamo che è un ID ed è primary e autogenerato
 	// Long come int ma più big
 	private @Id @GeneratedValue Long IDGioco;
