@@ -32,6 +32,5 @@ build/
 ### VS Code ###
 .vscode/
 target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
-target/m2e-wtp/web-resources/META-INF/maven/com.g3/ProjectWork/pom.properties
-target/classes/com/g3/projectwork/controller/GiocoController.class
+*/pomproperties
 *.class
