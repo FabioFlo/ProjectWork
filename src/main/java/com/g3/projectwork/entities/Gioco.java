@@ -1,5 +1,6 @@
 package com.g3.projectwork.entities;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
@@ -27,7 +28,7 @@ public class Gioco
 			)
 	private Long IDGioco;
 	private String titolo;
-	private LocalDate dataUscita;
+	private Date dataUscita;
 	private String serie;
 	private int pegi;
 	private Long IDPiattaforma;
@@ -36,7 +37,7 @@ public class Gioco
 	private Long IDEditor;
 	
 	
-	public Gioco(String titolo, LocalDate dataUscita, String serie, int pegi, Long iDPiattaforma, Long iDGenere,
+	public Gioco(String titolo, Date dataUscita, String serie, int pegi, Long iDPiattaforma, Long iDGenere,
 			Long iDSviluppatore, Long iDEditor) 
 	{
 		super();
@@ -54,6 +55,7 @@ public class Gioco
 	{
 		
 	}
+
 
 	public Long getIDGioco() 
 	{
@@ -79,13 +81,13 @@ public class Gioco
 	}
 
 
-	public LocalDate getDataUscita() 
+	public Date getDataUscita() 
 	{
 		return dataUscita;
 	}
 
 
-	public void setDataUscita(LocalDate dataUscita) 
+	public void setDataUscita(Date dataUscita) 
 	{
 		this.dataUscita = dataUscita;
 	}

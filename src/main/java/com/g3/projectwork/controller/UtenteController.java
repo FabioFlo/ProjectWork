@@ -1,5 +1,7 @@
 package com.g3.projectwork.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,89 +13,82 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.g3.projectwork.entities.Utente;
-import com.g3.projectwork.repos.UtenteRepository;
+import com.g3.projectwork.model.GenericResponse;
+import com.g3.projectwork.model.UtenteDTO;
+import com.g3.projectwork.services.UtenteService;
 
 // @RequestMapping(path = "api/utente")
 // con questo path indichiamo l'accesso a l'API di utente
 
 @RestController
-@RequestMapping(path = "api/utente") 
+@RequestMapping(path = "api/utente")
 public class UtenteController {
+	// Per convenzione nel controller non vengono eseguite operazioni o
+	// orchestrazioni
+	// ma deve essere richiamato un singolo metodo della classe UtenteService per
+	// ogni metodo del controller.
+	// La classe UtenteService funziona come una classe aggregatrice.
+	// Di conseguenza non serve dichiarare qui UtenteRepository perchè tutte le
+	// operazioni col database
+	// vengono svolte nel service
+	// NOTA BENE: i metodi di questa classe devono avere visibilità private per una
+	// questione di sicurezza.
+	// In input ai metodi post, non dovrà mai esserci la classe tuente ma la classe
+	// UtenteDTO!
+	// La classe UtenteDTO contiene gli stessi campi della classe @Entity Utente ma
+	// senza le annotation dell'entity.
+	// Questo perchè la classe di entity deve essere utilizzata solo per
+	// interfacciarsi col database
 
-	// Richiamiamo l'interfaccia che utilizziamo per usufruire dei metodi crud
-	private final UtenteRepository repository;
-	
-	// Amigos usa l'@Autowired anche qui ma non sono sicuro che sia necessario
-	// In GiochiController non lo abbiamo usato per esempio
 	@Autowired
-	UtenteController(UtenteRepository repository) {
-		this.repository = repository;
-	}
+	private UtenteService utenteService;
 
 	// List
 	// metodo per la lista giochi
 	@GetMapping("/utenti")
-	Iterable<Utente> getUtenti() {
-		return repository.findAll();
+	private List<UtenteDTO> getUtenti() {
+		return utenteService.getUtenti();
 	}
 
 	// Read Singolo
 	// metodo per leggere un solo utente
 	@GetMapping("/utente/{IDUtente}")
-	Utente getUtente(@PathVariable Long IDUtente) {
-		return repository.findById(IDUtente).orElseThrow();
+	private UtenteDTO getUtente(@PathVariable Long IDUtente) {
+		return utenteService.getUtente(IDUtente);
 	}
 
-	// TODO: Rimane da gestire come passare il LocalDate.now() anche alla creazione
 	// Create
 	// metodo per creare un utente
 	@PostMapping("/nuovoUtente")
-	Utente createUtente(@RequestBody Utente newUtente) {
-		return repository.save(newUtente);
+	private GenericResponse createUtente(@RequestBody UtenteDTO newUtente) {
+		return utenteService.createUtente(newUtente);
 	}
 
-	// TODO: Il problema di lettura della data che risulta null anche qui 
+	// funge
+//	@PostMapping("/nuovoUtente")
+//	Utente createUtente(@RequestParam ("bio") String bio,
+//			@RequestParam("data_compleanno") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataCompleanno,
+//			@RequestParam ("email_address") String emailAddress,
+//			@RequestParam ("pword") String pword,
+//			@RequestParam ("user_name") String userName) {
+//		LocalDate dataIscrizione = LocalDate.now();
+//		Utente u = new Utente(userName, emailAddress, pword, bio, dataIscrizione, dataCompleanno);
+//		return repository.save(u);
+//	}
+	// @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) questo signore dice al metodo che la data ha la formattazione (YYYY-MM-DD)
+
 	// Update
 	// metodo per modificare l'utente
 	@PutMapping("/modUtente/{IDUtente}")
-	Utente updateUtente(@PathVariable Long IDUtente, @RequestBody Utente utenteDTO) {
-		Utente u = repository.findById(IDUtente).orElseThrow();
-		u.setBio(utenteDTO.getBio());
-		u.setDataCompleanno(utenteDTO.getDataCompleanno());
-		// in teoria questo dato non dovrebbe essere modificato in quanto autogenerato
-		// al momento dlel'iscrizione LocalDate.now()
-		// u.setDataIscrizione(utenteDTO.getDataIscrizione());
-		u.setEmailAddress(utenteDTO.getEmailAddress());
-		u.setPword(utenteDTO.getPword());
-		u.setUserName(utenteDTO.getUserName());
-		return repository.save(u);
+	private GenericResponse updateUtente(@PathVariable Long IDUtente, @RequestBody UtenteDTO utenteDTO) {
+		return utenteService.updateUtente(IDUtente, utenteDTO);
 	}
 
-	
-	
 	// Delete
 	// Elimina utente
 	@DeleteMapping("/eliminaUtente/{IDUtente}")
-	void deleteUtente(@PathVariable Long IDUtente) {
-		Utente utente = repository.findById(IDUtente).orElseThrow();
-		repository.delete(utente);
+	private GenericResponse deleteUtente(@PathVariable Long IDUtente) {
+		return utenteService.deleteUtente(IDUtente);
 	}
-	
-	// esempio per testare il get
-//	@GetMapping("/listaUtenti")
-//	public List<Utente> getUtenti(){
-//		return List.of(
-//				new Utente(
-//						1L,
-//						"Dai",
-//						"perfavore.funziona@gmail.com",
-//						"1234",
-//						"Bla"
-//						+ "blabla"
-//						+ "Lorem Ipsum"
-//						+ "sit",
-//						LocalDate.now(),
-//						LocalDate.of(2000, 5, 10)
-//						));
-//	}
+
 }

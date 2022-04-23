@@ -1,14 +1,17 @@
 package com.g3.projectwork.controller;
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.g3.projectwork.entities.Gioco;
 import com.g3.projectwork.repos.GiocoRepository;
 import com.g3.projectwork.utility.GestoreTemplate;
@@ -61,7 +64,23 @@ public class GiocoController {
 		return giocoRepository.findById(IDGioco).orElseThrow();
 	}
 	
-	
+
+	//TODO: foglio html conferma creazione(?)
+	//CREATE gioco
+	@GetMapping("/creaGioco") 
+	Gioco createGiocoNuovo( @RequestParam("titolo") String titolo,
+			@RequestParam("dataUscita") Date dataUscita,
+			@RequestParam("IDSviluppatore") Long IDSviluppatore,
+			@RequestParam("IDEditor") Long IDEditor,
+			@RequestParam("IDGenere") Long IDGenere,
+			@RequestParam("IDPiattaforma") Long IDPiattaforma,
+			@RequestParam("pegi") int pegi,
+			@RequestParam("serie") String serie) {
+		Gioco giocoNuovo = new Gioco(titolo, dataUscita, serie, pegi, IDPiattaforma, IDGenere, IDSviluppatore, IDEditor);
+		System.out.println(true);
+		return giocoRepository.save(giocoNuovo);
+	}
+
 	//TODO
 	//CREATE gioco
 	@PostMapping("/giochi")
