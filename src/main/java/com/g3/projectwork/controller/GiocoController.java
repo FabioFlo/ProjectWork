@@ -71,29 +71,45 @@ public class GiocoController {
 		return giocoRepository.save(giocoNuovo);
 	}
 
+
 	// ---------------------------------------------------------------------------
-	//TODO
-	//UPDATE
-	@GetMapping("/giocoDaAggiornare")
-	void updateGioco(@RequestParam("IDGioco") Long IDGioco) {
-		Gioco giocoDaAggiornare = giocoRepository.findById(IDGioco).orElseThrow();
-	}
 
-	//TODO
+//	//TODO
+//	//UPDATE
+//	@GetMapping("/giocoDaAggiornare")
+//	void updateGioco(@RequestParam("IDGioco") Long IDGioco) {
+//		Gioco giocoDaAggiornare = giocoRepository.findById(IDGioco).orElseThrow();
+//	}
+//
+//	//TODO
+//	//UPDATE
+//	@GetMapping("/aggiornaGioco")
+//	Gioco updateGioco(@PathVariable Long IDGioco, @RequestBody Gioco giocoDTO) {
+//		Gioco giocoDaAggiornare = giocoRepository.findById(IDGioco).orElseThrow();
+//		giocoDaAggiornare.setIDEditor(giocoDTO.getIDEditor());
+//		giocoDaAggiornare.setIDGenere(giocoDTO.getIDGenere());
+//		giocoDaAggiornare.setIDPiattaforma(giocoDTO.getIDPiattaforma());
+//		giocoDaAggiornare.setIDSviluppatore(giocoDTO.getIDSviluppatore());
+//		giocoDaAggiornare.setPegi(giocoDTO.getPegi());
+//		giocoDaAggiornare.setSerie(giocoDTO.getSerie());
+//		giocoDaAggiornare.setTitolo(giocoDTO.getTitolo());
+//		return giocoRepository.save(giocoDaAggiornare);
+//	}
+
 	//UPDATE
-	@GetMapping("/aggiornaGioco")
+	@GetMapping("/modGioco/{IDGioco}")
 	Gioco updateGioco(@PathVariable Long IDGioco, @RequestBody Gioco giocoDTO) {
-		Gioco giocoDaAggiornare = giocoRepository.findById(IDGioco).orElseThrow();
-		giocoDaAggiornare.setIDEditor(giocoDTO.getIDEditor());
-		giocoDaAggiornare.setIDGenere(giocoDTO.getIDGenere());
-		giocoDaAggiornare.setIDPiattaforma(giocoDTO.getIDPiattaforma());
-		giocoDaAggiornare.setIDSviluppatore(giocoDTO.getIDSviluppatore());
-		giocoDaAggiornare.setPegi(giocoDTO.getPegi());
-		giocoDaAggiornare.setSerie(giocoDTO.getSerie());
-		giocoDaAggiornare.setTitolo(giocoDTO.getTitolo());
-		return giocoRepository.save(giocoDaAggiornare);
+		Gioco g = giocoRepository.findById(IDGioco).orElseThrow();
+		g.setTitolo(giocoDTO.getTitolo());
+		g.setDataUscita(giocoDTO.getDataUscita());
+		g.setSerie(giocoDTO.getSerie());
+		g.setPegi(giocoDTO.getPegi());
+		g.setIDPiattaforma(giocoDTO.getIDPiattaforma());
+		g.setIDGenere(giocoDTO.getIDGenere());
+		g.setIDSviluppatore(giocoDTO.getIDSviluppatore());
+		g.setIDEditor(giocoDTO.getIDEditor());
+		return giocoRepository.save(g);
 	}
-
 	// ---------------------------------------------------------------------------
 	
 	//TODO: foglio html conferma eliminazione(?)
