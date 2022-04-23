@@ -1,56 +1,56 @@
 package com.g3.projectwork.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.g3.projectwork.entities.Piattaforma;
-import com.g3.projectwork.repos.PiattaformaRepository;
+import com.g3.projectwork.model.PiattaformaDTO;
+import com.g3.projectwork.services.PiattaformaService;
+import com.g3.projectwork.utility.GenericResponse;
 
 @RestController
+@RequestMapping(path = "api/piattaforma")
 public class PiattaformaController {
-
-	private final PiattaformaRepository piattaformaRepository;
 	
-	PiattaformaController(PiattaformaRepository repository) {
-		piattaformaRepository = repository;
+	@Autowired
+	private PiattaformaService piattaformaService;
+	
+	//lista Piattaforma
+	@GetMapping("/piattaforma")
+	private List<PiattaformaDTO> getPiattaforme(){
+		return piattaformaService.getPiattaforme();
 	}
 	
-	//tutta la lista piattaforme
-	@GetMapping("/piattaforme")
-	Iterable<Piattaforma> getPiattaforme(){
-		return piattaformaRepository.findAll();
+	//uno Piattaforma
+	@GetMapping("/piattaforma/{IDPiattaforma}")
+	private PiattaformaDTO getPiattaforma(@PathVariable Long IDPiattaforma) {
+		return piattaformaService.getPiattaforma(IDPiattaforma);
 	}
 	
-	//una piattaforma
-	@GetMapping("/piattaforme/{IDPiattaforma}")
-	Piattaforma getPiattaforma(@PathVariable Long IDPiattaforma) {
-		return piattaformaRepository.findById(IDPiattaforma).orElseThrow();
+	//create Piattaforma
+	@PostMapping("/nuovaPiattaforma")
+	private GenericResponse createPiattaforma(@RequestBody PiattaformaDTO newPiattaforma) {
+		return piattaformaService.createPiattaforma(newPiattaforma);
 	}
 	
-	//create piattaforma
-	@PostMapping("/piattaforme")
-	Piattaforma createPiattaforma(@RequestBody Piattaforma newPiattaforma) {
-		return piattaformaRepository.save(newPiattaforma);
+	//update Piattaforma
+	@PutMapping("/piattaforma/{IDPiattaforma}")
+	private GenericResponse updatePiattaforma(@PathVariable Long IDPiattaforma, @RequestBody PiattaformaDTO piattaformaDTO) {
+		return piattaformaService.updatePiattaforma(IDPiattaforma, piattaformaDTO);
 	}
 	
-	//update piattaforma
-	@PutMapping("/piattaforme/{IDPiattaforma}")
-	Piattaforma updatePiattaforma(@PathVariable Long IDPiattaforma, @RequestBody Piattaforma piattaformaDTO) {
-		Piattaforma piattaformaDaAggiornare = piattaformaRepository.findById(IDPiattaforma).orElseThrow();
-		piattaformaDaAggiornare.setIDPiattaforma(piattaformaDTO.getIDPiattaforma());
-		piattaformaDaAggiornare.setPiattaforma(piattaformaDTO.getPiattaforma());
-		return piattaformaRepository.save(piattaformaDaAggiornare);
-	}
-	
-	//delete piattaforma
-	@DeleteMapping("/piattaforme/{IDPiattaforma}")
-	void deletePiattaforma(@PathVariable Long IDPiattaforma) {
-		Piattaforma piattaforma = piattaformaRepository.findById(IDPiattaforma).orElseThrow();
-		piattaformaRepository.delete(piattaforma);
+	//delete Piattaforma
+	@DeleteMapping("/piattaforma/{IDPiattaforma}")
+	private GenericResponse deletePiattaforma(@PathVariable Long IDPiattaforma) {
+		return piattaformaService.deletePiattaforma(IDPiattaforma);
 	}
 }

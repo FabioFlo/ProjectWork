@@ -58,27 +58,6 @@ public class GiocoController {
 	Gioco getGiocoSingolo(@RequestParam("IDGioco") Long IDGioco) {
 		return giocoRepository.findById(IDGioco).orElseThrow();
 	}
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	//TODO: foglio html conferma creazione(?)
 	//CREATE gioco
 	@GetMapping("/creaGioco")
@@ -95,11 +74,6 @@ public class GiocoController {
 		System.out.println(true);
 		return giocoRepository.save(giocoNuovo);
 	}
-
-
-
-
-
 
 	//TODO
 	//UPDATE

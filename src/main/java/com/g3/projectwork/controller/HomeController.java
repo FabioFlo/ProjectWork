@@ -17,16 +17,15 @@ public class HomeController {
 		return "Benvenuto sul sito";
 	}
 
-	//La Session è il foglio bianco su cui leggere o scrivere 
 	@GetMapping("/")
 	public String home(HttpSession session) {
 		//Se il mapping home viene richiesto e non ha un parametro viene rediretto
 		if(session.getAttribute("login") == null) {
 			return "redirect:/formlogin";
 		}
-		
 		return "home.html";
 	}
+	
 	/*
 	 * SEZIONE LOGIN
 	 * 
@@ -51,7 +50,10 @@ public class HomeController {
 		//Altrimenti rimandi a form settando false come fattore pagina
 	}
 	
-	@GetMapping("/logut")
+	/*
+	 * SEZIONE LOGOUT
+	 */
+	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.setAttribute("login", null);
 		session.setAttribute("username", null);
@@ -60,9 +62,9 @@ public class HomeController {
 		
 		return "redirect:/formlogin";
 	}
+	
 	/*
 	 * SEZIONE REGISTRAZIONE
-	 * 
 	 */
 	@GetMapping("/formregistrazione")
 	public String formRegistrazione() {

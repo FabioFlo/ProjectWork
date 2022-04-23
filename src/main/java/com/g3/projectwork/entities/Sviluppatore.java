@@ -22,7 +22,7 @@ public class Sviluppatore
 			)
 	private Long IDSviluppatore;
 	 @Column(unique = true)
-	private String NomeSviluppatore;
+	private String nomeSviluppatore;
 	
 	public Sviluppatore() {
 		
@@ -31,9 +31,11 @@ public class Sviluppatore
 	{
 		super();
 		IDSviluppatore = iDSviluppatore;
-		NomeSviluppatore = nomeSviluppatore;
+		this.nomeSviluppatore = nomeSviluppatore;
 	}
-
+	public Sviluppatore(String nomeSviluppatore) {
+		this.nomeSviluppatore = nomeSviluppatore;
+	}
 
 	public Long getIDSviluppatore() 
 	{
@@ -49,13 +51,13 @@ public class Sviluppatore
 
 	public String getNomeSviluppatore() 
 	{
-		return NomeSviluppatore;
+		return nomeSviluppatore;
 	}
 
 
 	public void setNomeSviluppatore(String nomeSviluppatore) 
 	{
-		NomeSviluppatore = nomeSviluppatore;
+		this.nomeSviluppatore = nomeSviluppatore;
 	}
 
 
@@ -64,7 +66,7 @@ public class Sviluppatore
 	{
 		return super.toString() 	  + 
 				"IDSviluppatore: "    + IDSviluppatore   + "\n" +
-				"Nome Sviluppatore: " + NomeSviluppatore + "\n" ;
+				"Nome Sviluppatore: " + nomeSviluppatore + "\n" ;
 	}
 	
 	

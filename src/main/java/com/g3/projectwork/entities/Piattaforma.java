@@ -23,7 +23,7 @@ public class Piattaforma
 	
 	private Long IDPiattaforma;
 	 @Column(unique = true)
-	private String Piattaforma;
+	private String nomePiattaforma;
 	public Piattaforma() {
 		
 	}
@@ -31,7 +31,7 @@ public class Piattaforma
 	{
 		super();
 		IDPiattaforma = iDPiattaforma;
-		Piattaforma = piattaforma;
+		nomePiattaforma = piattaforma;
 	}
 
 	public Long getIDPiattaforma()
@@ -44,14 +44,14 @@ public class Piattaforma
 		IDPiattaforma = iDPiattaforma;
 	}
 
-	public String getPiattaforma() 
+	public String getNomePiattaforma() 
 	{
-		return Piattaforma;
+		return nomePiattaforma;
 	}
 
-	public void setPiattaforma(String piattaforma)
+	public void setNomePiattaforma(String piattaforma)
 	{
-		Piattaforma = piattaforma;
+		nomePiattaforma = piattaforma;
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class Piattaforma
 	{
 		return super.toString()   +
 				"IDPiattaforma: " + IDPiattaforma + "\n" +
-				"Piattaforma: "   + Piattaforma   + "\n" ;
+				"Piattaforma: "   + nomePiattaforma   + "\n" ;
 	}
 	
 	

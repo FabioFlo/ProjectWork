@@ -34,7 +34,6 @@ public class Editor
 		NomeEditor = nomeEditor;
 	}
 
-
 	public Long getIDEditor() 
 	{
 		return IDEditor;
@@ -58,7 +57,6 @@ public class Editor
 		NomeEditor = nomeEditor;
 	}
 
-
 	@Override
 	public String toString() 
 	{
@@ -66,7 +64,4 @@ public class Editor
 				"IDEditor: "   + IDEditor   + "\n" +
 				"Nome Editor:" + NomeEditor + "\n" ;
 	}
-	
-	
-	
 }

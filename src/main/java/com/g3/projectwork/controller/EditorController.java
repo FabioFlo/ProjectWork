@@ -1,56 +1,55 @@
 package com.g3.projectwork.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.g3.projectwork.entities.Editor;
-import com.g3.projectwork.repos.EditorRepository;
+import com.g3.projectwork.model.EditorDTO;
+import com.g3.projectwork.services.EditorService;
+import com.g3.projectwork.utility.GenericResponse;
 
 @RestController
+@RequestMapping(path = "api/editor")
 public class EditorController {
 	
-	private final EditorRepository editorRepository;
+	@Autowired
+	private EditorService editorService;
 	
-	EditorController(EditorRepository repository) {
-		editorRepository = repository;
-	}
-	
-	//lista editor
+	//lista Editor
 	@GetMapping("/editor")
-	Iterable<Editor> getEditor(){
-		return editorRepository.findAll();
+	private List<EditorDTO> getEditori(){
+		return editorService.getEditori();
 	}
 	
-	//un editor
+	//uno Editor
 	@GetMapping("/editor/{IDEditor}")
-	Editor getEditor(@PathVariable Long IDEditor) {
-		return editorRepository.findById(IDEditor).orElseThrow();
+	private EditorDTO getEditor(@PathVariable Long IDEditor) {
+		return editorService.getEditor(IDEditor);
 	}
 	
-	//create editor
-	@PostMapping("/editor")
-	Editor createEditor(@RequestBody Editor newEditor) {
-		return editorRepository.save(newEditor);
+	//create Editor
+	@PostMapping("/nuovoEditor")
+	private GenericResponse createEditor(@RequestBody EditorDTO newEditor) {
+		return editorService.createEditor(newEditor);
 	}
 	
-	//update editor
+	//update Editor
 	@PutMapping("/editor/{IDEditor}")
-	Editor updateEditor(@PathVariable Long IDEditor, @RequestBody Editor editorDTO) {
-	Editor editorDaAggiornare = editorRepository.findById(IDEditor).orElseThrow();
-	editorDaAggiornare.setIDEditor(editorDTO.getIDEditor());
-	editorDaAggiornare.setNomeEditor(editorDTO.getNomeEditor());
-	return editorRepository.save(editorDaAggiornare);
+	private GenericResponse updateEditor(@PathVariable Long IDEditor, @RequestBody EditorDTO editorDTO) {
+		return editorService.updateEditor(IDEditor, editorDTO);
 	}
 	
-	//delete editor
+	//delete Editor
 	@DeleteMapping("/editor/{IDEditor}")
-	void deleteEditor(@PathVariable Long IDEditor) {
-		Editor editor = editorRepository.findById(IDEditor).orElseThrow();
-		editorRepository.delete(editor);
+	private GenericResponse deleteEditor(@PathVariable Long IDEditor) {
+		return editorService.deleteEditor(IDEditor);
 	}
 }

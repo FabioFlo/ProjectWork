@@ -20,7 +20,7 @@ public class Genere
 			generator = "genere_sequence")
 	private Long IDGenere;
 	 @Column(unique = true)
-	private String Genere;
+	private String nomeGenere;
 	public Genere() {
 		
 	}
@@ -28,7 +28,7 @@ public class Genere
 	{
 		super();
 		IDGenere = iDGenere;
-		Genere = genere;
+		nomeGenere = genere;
 	}
 
 	public Long getIDGenere()
@@ -41,14 +41,14 @@ public class Genere
 		IDGenere = iDGenere;
 	}
 
-	public String getGenere() 
+	public String getNomeGenere() 
 	{
-		return Genere;
+		return nomeGenere;
 	}
 
-	public void setGenere(String genere) 
+	public void setNomeGenere(String genere) 
 	{
-		Genere = genere;
+		nomeGenere = genere;
 	}
 
 	@Override
@@ -56,9 +56,6 @@ public class Genere
 	{
 		return super.toString() +
 				"IDGenere: " + IDGenere + "\n" + 
-				"Genere: " 	 + Genere   + "\n" ;
+				"Genere: " 	 + nomeGenere   + "\n" ;
 	}
-	
-	
-	
 }
