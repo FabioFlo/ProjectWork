@@ -11,7 +11,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table // indica che si tratta di una tabella
+@Table // TODO: VERIFICARE CHE INSERENDO IL NOME DELLA TABELLA GIA' PRESENTE IN MYSQL IL PERCORSO DEL CRUD VADA A COINCIDERE
 public class Utente {
 	@Id // diciamo inoltre che l'IDUtente è un id
 	@SequenceGenerator(

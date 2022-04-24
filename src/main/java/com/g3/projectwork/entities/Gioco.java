@@ -7,9 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 
 @Entity // Usiamo la notazione @Entity per indicare la classe Gioco come oggetto
+@Table
 public class Gioco 
 {
 
