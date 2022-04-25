@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.g3.projectwork.entities.Utente;
-import com.g3.projectwork.model.GenericResponse;
 import com.g3.projectwork.model.UtenteDTO;
 import com.g3.projectwork.repos.UtenteRepository;
+import com.g3.projectwork.utility.GenericResponse;
 
 @Service
 public class UtenteService {
@@ -58,13 +58,15 @@ public class UtenteService {
 		return utenteDTO;
 	}
 
-	public GenericResponse createUtente(UtenteDTO utente) {
+	// TODO: Aggiungere un controllo che procede alla creazione solo se riceve i dati validi, altrimenti l'ID incrementa anche in caso di creazione fallita
+	
+	public GenericResponse createUtente(UtenteDTO utenteDTO) {
 		Utente u = new Utente();
-		u.setBio(utente.getBio());
-		u.setDataCompleanno(utente.getDataCompleanno());
-		u.setEmailAddress(utente.getEmailAddress());
-		u.setPword(utente.getPword());
-		u.setUserName(utente.getUserName());
+		u.setBio(utenteDTO.getBio());
+		u.setDataCompleanno(utenteDTO.getDataCompleanno());
+		u.setEmailAddress(utenteDTO.getEmailAddress());
+		u.setPword(utenteDTO.getPword());
+		u.setUserName(utenteDTO.getUserName());
 		u.setDataIscrizione(LocalDate.now());
 		utenteRepository.save(u);
 		GenericResponse response = new GenericResponse();

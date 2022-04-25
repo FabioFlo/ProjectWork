@@ -9,36 +9,60 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table // indica che si tratta di una tabella
+@Table // Indica che si tratta di una tabella
 public class Utente {
-	@Id // diciamo inoltre che l'IDUtente è un id
+	@Id // Diciamo inoltre che l'IDUtente è un id  e una primarykey
 	@SequenceGenerator(
-			// diamo il nome che fa riferimento alla sequenza
+			// Diamo il nome che fa riferimento alla sequenza
 			name = "utente_sequence", sequenceName = "utente_sequence",
-			// ogni volta che viene inserito un nuovo utente
-			// l'id aumenta di 1
+			// Ogni volta che viene inserito un nuovo utente
+			// L'id aumenta di 1
 			allocationSize = 1)
 	@GeneratedValue(
 			// Con strategy indichiamo il tipo di azione che verrà eseguita
 			// per generare la chiave primaria dell'@Entity
 			strategy = GenerationType.SEQUENCE,
-			// inidichiamo il nome a cui stiamo facendo riferimento
+			// Indichiamo il nome a cui stiamo facendo riferimento
 			generator = "utente_sequence")
 	private Long IDUtente;
-	// questa annotazione marchia come unico il valore
-	// al momento della creazione della tabella, userName sarà unique
+	
+	// @NotBlank Questa notazione fa si che non possa essere accettato un inserimento di Utente se l'username è vuoto
+	// @Size viene usata insieme a per indicare un intervallo di valori accettabile
+	// @Column(unique = true) questa annotazione marchia come unico il valore
+	// al momento della creazione della tabella, userName sarà unique e quindi non potranno esistere più utenti con lo stesso userName
+	@NotBlank(message = "username obbligatorio") 
+	@Size (min = 2, max = 10)
 	@Column(unique = true)
 	private String userName;
-
+	
+	// Stessa cosa per l'email, ma qui facciamo di più. In questo campo verrano
+	// approvate SOLO email scritte in modo corretto.
+	// @Email significa che non posso essere accettate delle stringhe generiche per esempio
+	@NotBlank 
+	@Email(message = "email non valida") 
 	@Column(unique = true)
 	private String emailAddress;
-
+	
+	@NotBlank(message = "password obbligatoria")
+	@Size (min = 6, max = 32)
 	private String pword;
+	
+	@Size (min = 0, max = 150)
 	private String bio;
-	private LocalDate dataIscrizione;
+	
+	// La notazione @Past non permette di accettare date che vadano oltre quella del giorno attuale.
+	// Non accettiamo visitatori dal futuro, scusa :(
+	@Past
 	private LocalDate dataCompleanno;
+	private LocalDate dataIscrizione;
+	
+	
 
 	public Utente() {
 

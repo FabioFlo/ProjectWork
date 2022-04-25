@@ -1,4 +1,4 @@
-package com.g3.projectwork.model;
+package com.g3.projectwork.utility;
 
 public class GenericResponse {
 

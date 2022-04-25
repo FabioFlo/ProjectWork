@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.g3.projectwork.entities.Utente;
-import com.g3.projectwork.model.GenericResponse;
 import com.g3.projectwork.model.UtenteDTO;
 import com.g3.projectwork.services.UtenteService;
+import com.g3.projectwork.utility.GenericResponse;
 
 // @RequestMapping(path = "api/utente")
 // con questo path indichiamo l'accesso a l'API di utente

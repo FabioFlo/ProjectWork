@@ -19,25 +19,25 @@ public class UtenteDTO {
 	
 	
 	public String getUserName() {
-		return userName;
+		return userName.trim();
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 	public String getEmailAddress() {
-		return emailAddress;
+		return emailAddress.trim();
 	}
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
 	}
 	public String getPword() {
-		return pword;
+		return pword.trim();
 	}
 	public void setPword(String pword) {
 		this.pword = pword;
 	}
 	public String getBio() {
-		return bio;
+		return bio.trim();
 	}
 	public void setBio(String bio) {
 		this.bio = bio;
