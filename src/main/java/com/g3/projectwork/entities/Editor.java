@@ -7,9 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table
+@Table(name= "editor")
 public class Editor 
 {
 	@Id 
@@ -23,8 +24,9 @@ public class Editor
 			generator = "editor_sequence"
 			)
 	private Long IDEditor;
-	 @Column(unique = true)
-	private String NomeEditor;
+	 @Column(unique = true, name ="nomeEditor")
+	 @NotBlank(message = "Nome Editor Necessario") //Questa annotazione serve per la validazione degli elementi inseriti, l'istanziazione non prosegue se viene individuato un nome "blank"
+	private String nomeEditor;
 	
 	public Editor() {
 		
@@ -33,7 +35,7 @@ public class Editor
 	{
 		super();
 		IDEditor = iDEditor;
-		NomeEditor = nomeEditor;
+		this.nomeEditor = nomeEditor;
 	}
 
 	public Long getIDEditor() 
@@ -50,13 +52,13 @@ public class Editor
 
 	public String getNomeEditor()
 	{
-		return NomeEditor;
+		return nomeEditor;
 	}
 
 
 	public void setNomeEditor(String nomeEditor) 
 	{
-		NomeEditor = nomeEditor;
+		this.nomeEditor = nomeEditor;
 	}
 
 	@Override
@@ -64,6 +66,6 @@ public class Editor
 	{
 		return super.toString() +
 				"IDEditor: "   + IDEditor   + "\n" +
-				"Nome Editor:" + NomeEditor + "\n" ;
+				"Nome Editor:" + nomeEditor + "\n" ;
 	}
 }
