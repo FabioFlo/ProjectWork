@@ -92,15 +92,15 @@ public class EditorAdminController {
 	}
 	//SHOW PAGINA UPDATE - 
 	@GetMapping("/edit/{id}")
-	public String showUpdateForm(@PathVariable("id") long id, Model model) {
+	public String showUpdateForm(@PathVariable("id") Long id, Model model) {
 		Editor editor = editorRepository.findById(id)		//Seleziono l'editor nella repo
-				.orElseThrow(()-> new IllegalArgumentException("ID" + id +" non valido"));	//Lancio un eccezione se in qualche modo riesco ad avere un id non valido.
+				.orElseThrow(()-> new IllegalArgumentException("ID " + id +" non valido"));	//Lancio un eccezione se in qualche modo riesco ad avere un id non valido.
 		model.addAttribute("editor", editor);				//Aggiungo il mio editor selezionato al modello 
 		return "updateEditorPage.html";						//Vado alla pagina di update
 	}
 	//UPDATE
 	@PostMapping("/update/{id}")
-	public String updateEditor(@PathVariable("id") long id, @Valid Editor editor, BindingResult result, Model model) {
+	public String updateEditor(@PathVariable("id") Long id, @Valid Editor editor, BindingResult result, Model model) {
 		if(result.hasErrors()) {
 			editor.setIDEditor(id);				//Resetto l'id per ricaricare la pagina nel caso ci sia un errore durante il load dell'oggetto
 			return "updateEditorPage.html";		//Vedi CREATE
@@ -111,9 +111,9 @@ public class EditorAdminController {
 	}
 	//DELETE
 	@GetMapping("/delete/{id}")
-	public String deleteEditor(@PathVariable("id")long id, Model model) {
+	public String deleteEditor(@PathVariable("id") Long id, Model model) {
 		Editor editor = editorRepository.findById(id)
-				.orElseThrow(()-> new IllegalArgumentException("ID" + id + "non valido"));
+				.orElseThrow(()-> new IllegalArgumentException("ID " + id + "non valido"));
 		editorRepository.delete(editor);		//Vedi update, la navigazione ritorna alla pagina di listing perchè non ho un form da compilare per il delete
 		return "AdminEditorPage.html";
 	}
