@@ -9,7 +9,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table (name ="piattaforme")
 public class Piattaforma
 {
 	@Id
@@ -24,8 +24,9 @@ public class Piattaforma
 			)
 	
 	private Long IDPiattaforma;
-	 @Column(unique = true)
+	@Column(unique = true)
 	private String nomePiattaforma;
+	 
 	public Piattaforma() {
 		
 	}

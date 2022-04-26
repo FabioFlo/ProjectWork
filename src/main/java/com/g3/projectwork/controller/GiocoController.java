@@ -60,20 +60,20 @@ public class GiocoController {
 	}
 	//TODO: foglio html conferma creazione(?)
 	//CREATE gioco
-	@GetMapping("/creaGioco")
-	Gioco createGiocoNuovo( @RequestParam("titolo") String titolo,
-			@RequestParam("dataUscita") Date dataUscita,
-			@RequestParam("IDSviluppatore") Long IDSviluppatore,
-			@RequestParam("IDEditor") Long IDEditor,
-			@RequestParam("IDGenere") Long IDGenere,
-			@RequestParam("IDPiattaforma") Long IDPiattaforma,
-			@RequestParam("pegi") int pegi,
-			@RequestParam("serie") String serie) {
-
-		Gioco giocoNuovo = new Gioco(titolo, dataUscita, serie, pegi, IDPiattaforma, IDGenere, IDSviluppatore, IDEditor);
-		System.out.println(true);
-		return giocoRepository.save(giocoNuovo);
-	}
+//	@GetMapping("/creaGioco")
+//	Gioco createGiocoNuovo( @RequestParam("titolo") String titolo,
+//			@RequestParam("dataUscita") LocalDate dataUscita,
+//			@RequestParam("IDSviluppatore") Long IDSviluppatore,
+//			@RequestParam("IDEditor") Long IDEditor,
+//			@RequestParam("IDGenere") Long IDGenere,
+//			@RequestParam("IDPiattaforma") Long IDPiattaforma,
+//			@RequestParam("pegi") int pegi,
+//			@RequestParam("serie") String serie) {
+//
+//		Gioco giocoNuovo = new Gioco(titolo, dataUscita, serie, pegi, IDPiattaforma, IDGenere, IDSviluppatore, IDEditor);
+//		System.out.println(true);
+//		return giocoRepository.save(giocoNuovo);
+//	}
 
 
 

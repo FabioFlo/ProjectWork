@@ -1,17 +1,22 @@
 package com.g3.projectwork.entities;
 
-import java.sql.Date;
-
+import java.lang.annotation.Repeatable;
+import java.time.LocalDate;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
-@Entity // Usiamo la notazione @Entity per indicare la classe Gioco come oggetto
-@Table
+@Entity 
+@Table(name = "gioco") 
 public class Gioco 
 {
 
@@ -28,172 +33,167 @@ public class Gioco
 			generator = "gioco_sequence"
 			)
 	private Long IDGioco;
+	
+	@Column(name = "titolo")
+	@NotBlank(message = "Titolo Gioco Necessario")
 	private String titolo;
-	private Date dataUscita;
-	private String serie;
+	
+	@Column(name = "dataUscita")	
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	private LocalDate dataUscita;
+	 
+	@Column(name = "serie")
+	private String serie; 
+	
+	@Column(name = "pegi")
+	@Max(value = 18)
+	@Min(value = 3)
 	private int pegi;
+	
+	@Column(name = "IDPiattaforma")
 	private Long IDPiattaforma;
+	
+	@Column(name = "IDGenere")
 	private Long IDGenere;
+	
+	@Column(name = "IDSviluppatore")
 	private Long IDSviluppatore;
+	
+	@Column(name = "IDEditor")
 	private Long IDEditor;
 	
-	
-	public Gioco(String titolo, Date dataUscita, String serie, int pegi, Long iDPiattaforma, Long iDGenere,
-			Long iDSviluppatore, Long iDEditor) 
-	{
-		super();
-		this.titolo = titolo;
-		this.dataUscita = dataUscita;
-		this.serie = serie;
-		this.pegi = pegi;
-		IDPiattaforma = iDPiattaforma;
-		IDGenere = iDGenere;
-		IDSviluppatore = iDSviluppatore;
-		IDEditor = iDEditor;
-	}
-
-	//COSTRUTTORE SENZA DATA
-	public Gioco(String titolo, String serie, int pegi, Long iDPiattaforma, Long iDGenere,
-			Long iDSviluppatore, Long iDEditor) 
-	{
-		super();
-		this.titolo = titolo;
-		this.serie = serie;
-		this.pegi = pegi;
-		IDPiattaforma = iDPiattaforma;
-		IDGenere = iDGenere;
-		IDSviluppatore = iDSviluppatore;
-		IDEditor = iDEditor;
-	}
-	public Gioco() 
-	{
+	public Gioco() {
 		
 	}
 
-	public Long getIDGioco() 
-	{
+	public Gioco(Long iDGioco, @NotBlank(message = "Titolo Gioco Necessario") String titolo, LocalDate dataUscita,
+			String serie, @Min(3) @Max(18) int pegi, Long iDPiattaforma, Long iDGenere, Long iDSviluppatore,
+			Long iDEditor) {
+		super();
+		IDGioco = iDGioco;
+		this.titolo = titolo;
+		this.dataUscita = dataUscita;
+		this.serie = serie;
+		this.pegi = pegi;
+		IDPiattaforma = iDPiattaforma;
+		IDGenere = iDGenere;
+		IDSviluppatore = iDSviluppatore;
+		IDEditor = iDEditor;
+	}
+
+
+
+	public Gioco(Long iDGioco, @NotBlank(message = "Titolo Gioco Necessario") String titolo, LocalDate dataUscita,
+			String serie, Long iDPiattaforma, Long iDGenere, Long iDSviluppatore, Long iDEditor) {
+		super();
+		IDGioco = iDGioco;
+		this.titolo = titolo;
+		this.dataUscita = dataUscita;
+		this.serie = serie;
+		IDPiattaforma = iDPiattaforma;
+		IDGenere = iDGenere;
+		IDSviluppatore = iDSviluppatore;
+		IDEditor = iDEditor;
+	}
+
+	public Gioco(@NotBlank(message = "Titolo Gioco Necessario") String titolo, LocalDate dataUscita, String serie,
+			@Min(3) @Max(18) int pegi, Long iDPiattaforma, Long iDGenere, Long iDSviluppatore, Long iDEditor) {
+		super();
+		this.titolo = titolo;
+		this.dataUscita = dataUscita;
+		this.serie = serie;
+		this.pegi = pegi;
+		IDPiattaforma = iDPiattaforma;
+		IDGenere = iDGenere;
+		IDSviluppatore = iDSviluppatore;
+		IDEditor = iDEditor;
+	}
+
+	public Long getIDGioco() {
 		return IDGioco;
 	}
 
-
-	public void setIDGioco(Long iDGioco) 
-	{
+	public void setIDGioco(Long iDGioco) {
 		IDGioco = iDGioco;
 	}
 
-
-	public String getTitolo()
-{
+	public String getTitolo() {
 		return titolo;
 	}
 
-
-	public void setTitolo(String titolo)
-	{
+	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
 
-
-	public Date getDataUscita() 
-	{
+	public LocalDate getDataUscita() {
 		return dataUscita;
 	}
 
-
-	public void setDataUscita(Date dataUscita) 
-	{
+	public void setDataUscita(LocalDate dataUscita) {
 		this.dataUscita = dataUscita;
 	}
 
-
-	public String getSerie() 
-	{
+	public String getSerie() {
 		return serie;
 	}
 
-
-	public void setSerie(String serie) 
-	{
+	public void setSerie(String serie) {
 		this.serie = serie;
 	}
 
-
-	public int getPegi()
-	{
+	public int getPegi() {
 		return pegi;
 	}
 
 
-	public void setPegi(int pegi) 
-	{
+	public void setPegi(int pegi) {
 		this.pegi = pegi;
 	}
 
-
-	public Long getIDPiattaforma() 
-	{
+	public Long getIDPiattaforma() {
 		return IDPiattaforma;
 	}
 
-
-	public void setIDPiattaforma(Long iDPiattaforma)
-	{
+	public void setIDPiattaforma(Long iDPiattaforma) {
 		IDPiattaforma = iDPiattaforma;
 	}
 
-
-	public Long getIDGenere() 
-	{
+	public Long getIDGenere() {
 		return IDGenere;
 	}
 
-
-	public void setIDGenere(Long iDGenere) 
-	{
+	public void setIDGenere(Long iDGenere) {
 		IDGenere = iDGenere;
 	}
 
-
-	public Long getIDSviluppatore() 
-	{
+	public Long getIDSviluppatore() {
 		return IDSviluppatore;
 	}
 
-
-	public void setIDSviluppatore(Long iDSviluppatore) 
-	{
+	public void setIDSviluppatore(Long iDSviluppatore) {
 		IDSviluppatore = iDSviluppatore;
 	}
 
-
-	public Long getIDEditor() 
-	{
+	public Long getIDEditor() {
 		return IDEditor;
 	}
 
-
-	public void setIDEditor(Long iDEditor)
-	{
+	public void setIDEditor(Long iDEditor) {
 		IDEditor = iDEditor;
 	}
 
 	@Override
-	public String toString() 
-	{
-		return 
-				super.toString() +
-				"IDGioco: " 		+ IDGioco 		 + "\n" +
-				"Titolo: " 			+ titolo 		 + "\n" + 
-				"Data Uscita: " 	+ dataUscita 	 + "\n" +
-				"Serie: " 			+ serie 		 + "\n" +
-				"Pegi: " 			+ pegi 			 + "\n" + 
-				"IDPiattaforma: "   + IDPiattaforma  + "\n" +
-				"IDGenere: " 		+ IDGenere 		 + "\n" + 
-				"IDSviluppatore: "  + IDSviluppatore + "\n" + 
-				"IDEditor: " 		+ IDEditor   	 + "\n" ;
+	public String toString() {
+		return super.toString() +
+				"IDGioco: "        + IDGioco        + "\n" +
+				"Titolo: "         + titolo         + "\n" +
+				"Data di Uscita: " + dataUscita     + "\n" +
+				"Serie: "          + serie          + "\n" +
+				"pegi: "           + pegi           + "\n" +
+				"IDPiattaforma: "  + IDPiattaforma  + "\n" +
+				"IDGenere: "       + IDGenere       + "\n" +
+				"IDSviluppatore: " + IDSviluppatore + "\n" +
+				"IDEditor: "       + IDEditor       + "\n";
 	}
-	
-	
-	
-	
+
 }
