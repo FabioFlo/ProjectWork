@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Update Game Page</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+</head>
+<body>
+	<form action="#" th:action="@{/giochi/update/{id}(id=${gioco.IDGioco})}"
+		th:object="${gioco}" method="post">
+		<label for="titolo">Title</label> <input type="text"
+			th:field="*{titolo}" id="titolo" placeholder="Title">
+			<br>
+		<label for="dataUscita">Release Date</label> <input type="date"
+			th:field="*{dataUscita}" id="dataUscita" placeholder="Release Date">
+			<br>
+		<label for="serie">Series</label> <input type="text"
+			th:field="*{serie}" id="serie" placeholder="Series">
+			<br>
+		<label for="pegi">PEGI</label> <input type="number"
+			th:field="*{pegi}" id="pegi" placeholder="PEGI">
+			<br>
+		<label for="IDPiattaforma">Platform ID</label> <input type="number"
+			th:field="*{IDPiattaforma}" id="IDPiattaforma" placeholder="Platform ID">
+			<br>
+		<label for="IDGenere">Genre ID</label> <input type="number"
+			th:field="*{IDGenere}" id="IDGenere" placeholder="Genre ID">
+			<br>
+		<label for="IDSviluppatore">Developer ID</label> <input type="number"
+			th:field="*{IDSviluppatore}" id="IDSviluppatore" placeholder="Developer ID">
+			<br>
+		<label for="IDEditor">Editor ID</label> <input type="number"
+			th:field="*{IDEditor}" id="IDEditor" placeholder="Editor ID">
+			<br>
+		 <input type="submit"
+			value="Update Game">
+	</form>
+</body>
+</html>
