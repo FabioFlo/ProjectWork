@@ -19,7 +19,7 @@
 	 quindi mostro un link per il reload nell'href, dandogli il @GetMapping di questa pagina
 	 -->
 		<h1 th:case="null">
-			Await to be inserted, please <a href="/listEditor">reload</a>
+			Await to be inserted, please <a href="/editor/listEditor">reload</a>
 		</h1>
 		<!-- Se la mia lista non è nulla entro in questo caso -->
 		<div th:case="*">
@@ -45,9 +45,9 @@
 						<!-- La mia funzione di edit mi porta al @GetMapping(/edit/{id}
 						Gli passo il valore dell'editor a quella riga nella sezione tra parentesi tonde
 						(id si riferisce all'id del @getmapping, = {editor ovvero l'oggetto, IDEditor va scritto esattamente come nella Entity! -->
-						<td><a th:href="@{/edit/{id}(id=${editor.IDEditor})}">Edit</a></td>
+						<td><a th:href="@{/editor/edit/{id}(id=${editor.IDEditor})}">Edit</a></td>
 						<!-- Ripeto l'operazione per il delete -->
-						<td><a th:href="@{/delete/{id}(id=${editor.IDEditor})}">Delete</a></td>
+						<td><a th:href="@{/editor/delete/{id}(id=${editor.IDEditor})}">Delete</a></td>
 					</tr>
 					<!-- La sostituzione e la ripetizione della riga della tabella la gestisce thymeleaf! -->
 				</tbody>
@@ -55,7 +55,7 @@
 		</div>
 		<!-- FINE DELLO SWITCH Questa parte la mostro sempre e comunque e linko alla pagina di aggiunta editor -->
 		<p>
-			<a href="/addEditorPage">Add a new editor</a>
+			<a href="/editor/addEditorPage">Add a new editor</a>
 		</p>
 	</div>
 </body>

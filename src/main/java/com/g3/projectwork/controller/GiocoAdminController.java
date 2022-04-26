@@ -25,24 +25,24 @@ public class GiocoAdminController {
 	@GetMapping("/listGioco")
 	public String showGiocoList(Model model) {
 		model.addAttribute("giochi", giocoRepository.findAll());
-		return "AdminGiocoPage.html";
+		return "gioco/AdminGiocoPage.html";
 	}
 	
 	//SHOW PAGINA ADD GIOCO
 	@GetMapping("/addGiocoPage")
 	public String showAddGiocoPage(Model model) {
 		model.addAttribute("gioco", new Gioco());
-		return "addGiocoPage.html";
+		return "gioco/addGiocoPage.html";
 	}
 	
 	//CREATE
 	@PostMapping("/addGioco")
 	public String addGioco(@Valid Gioco gioco, BindingResult result, Model model) {
 		if(result.hasErrors()) {
-			return "addGiocoPage.html";
+			return "gioco/addGiocoPage.html";
 		}
 		giocoRepository.save(gioco);
-		return "AdminGiocoPage.html";
+		return "gioco/AdminGiocoPage.html";
 	}
 	
 	//SHOW PAGINA UPDATE GIOCO
@@ -50,7 +50,7 @@ public class GiocoAdminController {
 	public String showUpdateGioco(@PathVariable("id") Long id, Model model) {
 		Gioco gioco = giocoRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("ID" + id +" non valido"));
 		model.addAttribute("gioco", gioco);
-		return "updateGiocoPage.html";
+		return "gioco/updateGiocoPage.html";
 	}
 	
 	//UPDATE
@@ -58,11 +58,11 @@ public class GiocoAdminController {
 	public String updateGioco(@PathVariable("id") Long id, @Valid Gioco gioco, BindingResult result, Model model) {
 		if(result.hasErrors()) {
 			gioco.setIDGioco(id);
-			return "updateGiocoPage.html";
+			return "gioco/updateGiocoPage.html";
 		}
 		gioco.setIDGioco(id);
 		giocoRepository.save(gioco);
-		return "AdminGiocoPage.html";
+		return "gioco/AdminGiocoPage.html";
 	}
 	
 	//DELETE
@@ -70,6 +70,6 @@ public class GiocoAdminController {
 	public String deleteGioco(@PathVariable("id") Long id, Model model) {
 		Gioco gioco = giocoRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("ID" + id + "non valido"));
 		giocoRepository.delete(gioco);
-		return "AdminGiocoPage.html";
+		return "gioco/AdminGiocoPage.html";
 	}
 }

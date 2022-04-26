@@ -26,7 +26,7 @@ public class UtenteAdminController {
 	@GetMapping("/listUtenti")
 	public String showUserList(Model model) {
 		model.addAttribute("utenti", utentiRepository.findAll());
-		return "AdminUtentiPage.html";
+		return "utente/AdminUtentiPage.html";
 	}
 	
 	//SHOW PAGINA ADD UTENTE
@@ -34,17 +34,17 @@ public class UtenteAdminController {
 	public String showAddUtentePage(Model model) {
 		model.addAttribute("utente", new Utente());
 		model.addAttribute("localDateNow", LocalDateTime.now());
-		return "addUtentePage.html";
+		return "utente/addUtentePage.html";
 	}
 	
 	//CREATE UTENTE
 	@PostMapping("/addUtente")
 	public String addUtente(@Valid Utente utente, BindingResult result, Model model) {
 		if(result.hasErrors()) {
-			return "addUtentePage.html";
+			return "utente/addUtentePage.html";
 		}
 		utentiRepository.save(utente);
-		return "AdminUtentiPage.html";
+		return "utente/AdminUtentiPage.html";
 	}
 	
 	//SHOW PAGINA UPDATE
@@ -53,7 +53,7 @@ public class UtenteAdminController {
 		Utente utente = utentiRepository.findById(id)
 				.orElseThrow(()-> new IllegalArgumentException("ID" + id + "non valido"));
 		model.addAttribute("utente", utente);
-		return "updateUtentePage.html";
+		return "utente/updateUtentePage.html";
 	}
 	
 	//UPDATE
@@ -61,11 +61,11 @@ public class UtenteAdminController {
 	public String updateUtente(@PathVariable("id") Long id, @Valid Utente utente, BindingResult result, Model model) {
 		if(result.hasErrors()) {
 			utente.setIDUtente(id);
-			return "updateUtentePage.html";
+			return "utente/updateUtentePage.html";
 		}
 		utente.setIDUtente(id);
 		utentiRepository.save(utente);
-		return "AdminUtentiPage.html";
+		return "utente/AdminUtentiPage.html";
 	}
 	
 	//DELETE
@@ -74,6 +74,6 @@ public class UtenteAdminController {
 		Utente utente = utentiRepository.findById(id)
 				.orElseThrow(()-> new IllegalArgumentException("ID" + id + "non valido"));
 		utentiRepository.delete(utente);
-		return "AdminUtentiPage.html";
+		return "utente/AdminUtentiPage.html";
 	}
 }

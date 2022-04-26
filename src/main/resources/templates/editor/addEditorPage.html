@@ -17,7 +17,7 @@
 	<!-- Collego l'azione del form tramite th:action al @getMapping corrispondente
 	Specifico che l'oggetto passato è editor
 	nell'input specifico che il field dell'oggetto è quello corrispondente -->
-	<form action="#" th:action="@{/addEditor}" th:object="${editor}"
+	<form action="#" th:action="@{/editor/addEditor}" th:object="${editor}"
 		method="post">
 		<label for="nomeEditor">Name</label> <input type="text"
 			th:field="*{nomeEditor}" id="nomeEditor" placeholder="NomeEditor">
