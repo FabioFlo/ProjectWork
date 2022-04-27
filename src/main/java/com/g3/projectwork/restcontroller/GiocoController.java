@@ -112,10 +112,10 @@ public class GiocoController {
 		g.setDataUscita(giocoDTO.getDataUscita());
 		g.setSerie(giocoDTO.getSerie());
 		g.setPegi(giocoDTO.getPegi());
-		g.setIDPiattaforma(giocoDTO.getIDPiattaforma());
-		g.setIDGenere(giocoDTO.getIDGenere());
-		g.setIDSviluppatore(giocoDTO.getIDSviluppatore());
-		g.setIDEditor(giocoDTO.getIDEditor());
+		//g.setIDPiattaforma(giocoDTO.getIDPiattaforma());
+		//g.setIDGenere(giocoDTO.getIDGenere());
+		//g.setIDSviluppatore(giocoDTO.getIDSviluppatore());
+		//g.setIDEditor(giocoDTO.getIDEditor());
 		return giocoRepository.save(g);
 	}
 	// ---------------------------------------------------------------------------

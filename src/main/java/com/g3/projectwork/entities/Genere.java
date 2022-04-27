@@ -1,15 +1,18 @@
 package com.g3.projectwork.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "genere")
 public class Genere 
 {
 	@Id @SequenceGenerator(
@@ -21,8 +24,13 @@ public class Genere
 			strategy = GenerationType.SEQUENCE,
 			generator = "genere_sequence")
 	private Long IDGenere;
-	 @Column(unique = true)
+	@Column(unique = true)
 	private String nomeGenere;
+	
+	@OneToMany(mappedBy="genere")
+	private List<Gioco> giochi;
+	
+	
 	public Genere() {
 		
 	}

@@ -24,17 +24,21 @@
 		<label for="pegi">PEGI</label> <input type="number"
 			th:field="*{pegi}" id="pegi" placeholder="PEGI">
 			<br>
-		<label for="IDPiattaforma">Platform ID</label> <input type="number"
-			th:field="*{IDPiattaforma}" id="IDPiattaforma" placeholder="Platform ID">
+		<label for="IDPiattaforma">Platform ID</label> <select th:field = *{piattaforma}>
+			<option th:each = "piattaforma : ${piattaforme}" th:value= "${piattaforma.IDPiattaforma}" th:text = "${piattaforma.nomePiattaforma}"></option>
+			</select>
 			<br>
-		<label for="IDGenere">Genre ID</label> <input type="number"
-			th:field="*{IDGenere}" id="IDGenere" placeholder="Genre ID">
+		<label for="IDGenere">Genre ID</label> <select th:field = *{genere}>
+			<option th:each = "genere : ${generi}" th:value= "${genere.IDGenere}" th:text = "${genere.nomeGenere}"></option>
+			</select>
 			<br>
-		<label for="IDSviluppatore">Developer ID</label> <input type="number"
-			th:field="*{IDSviluppatore}" id="IDSviluppatore" placeholder="Developer ID">
+		<label for="IDSviluppatore">Developer ID</label> <select th:field = *{sviluppatore}>
+			<option th:each = "sviluppatore : ${sviluppatori}" th:value= "${sviluppatore.IDSviluppatore}" th:text = "${sviluppatore.nomeSviluppatore}"></option>
+			</select>
 			<br>
-		<label for="IDEditor">Editor ID</label> <input type="number"
-			th:field="*{IDEditor}" id="IDEditor" placeholder="Editor ID">
+		<label for="IDEditor">Editor ID</label> <select th:field = *{editor}>
+			<option th:each = "editor : ${editors}" th:value= "${editor.IDEditor}" th:text = "${editor.nomeEditor}"></option>
+			</select>
 			<br>
 		 <input type="submit"
 			value="Update Game">

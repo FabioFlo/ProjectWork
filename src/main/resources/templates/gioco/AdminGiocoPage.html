@@ -50,10 +50,10 @@
 						<td th:text="${gioco.dataUscita}"></td>
 						<td th:text="${gioco.serie}"></td>
 						<td th:text="${gioco.pegi}"></td>
-						<td th:text="${gioco.IDPiattaforma}"></td>
-						<td th:text="${gioco.IDGenere}"></td>
-						<td th:text="${gioco.IDSviluppatore}"></td>
-						<td th:text="${gioco.IDEditor}"></td>
+						<td th:text="${gioco.piattaforma.nomePiattaforma}"></td>
+						<td th:text="${gioco.genere.nomeGenere}"></td>
+						<td th:text="${gioco.sviluppatore.nomeSviluppatore}"></td>
+						<td th:text="${gioco.editor.nomeEditor}"></td>
 						<td><a th:href="@{/giochi/edit/{id}(id=${gioco.IDGioco})}">Edit</a></td>
 
 						<td><a th:href="@{/giochi/delete/{id}(id=${gioco.IDGioco})}">Delete</a></td>
