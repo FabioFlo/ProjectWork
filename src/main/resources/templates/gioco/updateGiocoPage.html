@@ -21,9 +21,14 @@
 		<label for="serie">Series</label> <input type="text"
 			th:field="*{serie}" id="serie" placeholder="Series">
 			<br>
-		<label for="pegi">PEGI</label> <input type="number"
-			th:field="*{pegi}" id="pegi" placeholder="PEGI">
-			<br>
+		<label for="pegi">PEGI</label>
+		<select th:field="*{pegi}" name="pegi">
+			<option value ="3">3</option>
+			<option value ="7">7</option>
+			<option value ="12">12</option>
+			<option value ="16">16</option>
+			<option value ="18">18</option>			
+		</select>
 		<label for="IDPiattaforma">Platform ID</label> <select th:field = *{piattaforma}>
 			<option th:each = "piattaforma : ${piattaforme}" th:value= "${piattaforma.IDPiattaforma}" th:text = "${piattaforma.nomePiattaforma}"></option>
 			</select>
