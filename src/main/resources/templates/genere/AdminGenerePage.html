@@ -26,7 +26,7 @@
 				</thead>
 			<tbody>
 				<tr th:each="genere : ${generi}">
-					<td th:text="${genere.nomeGenere"></td>
+					<td th:text="${genere.nomeGenere}"></td>
 					<td><a th:href="@{/generi/edit/{id}(id=${genere.IDGenere})}">Edit</a></td>
 					<td><a th:href="@{/generi/delete/{id}(id=${genere.IDGenere})}">Delete</a></td>
 				</tr>

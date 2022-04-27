@@ -64,6 +64,11 @@ public class GiocoAdminController {
 	@PostMapping("/addGioco")
 	public String addGioco(@Valid Gioco gioco, BindingResult result, Model model) {
 		if(result.hasErrors()) {
+			model.addAttribute("gioco", new Gioco());
+			model.addAttribute("piattaforme", piattaformaRepository.findAll());
+			model.addAttribute("generi", genereRepository.findAll());
+			model.addAttribute("sviluppatori", sviluppatoreRepository.findAll());
+			model.addAttribute("editors", editorRepository.findAll());
 			return "gioco/addGiocoPage.html";
 		}
 		giocoRepository.save(gioco);
@@ -89,6 +94,11 @@ public class GiocoAdminController {
 	public String updateGioco(@PathVariable("id") Long id, @Valid Gioco gioco, BindingResult result, Model model) {
 		if(result.hasErrors()) {
 			gioco.setIDGioco(id);
+			model.addAttribute("gioco", new Gioco());
+			model.addAttribute("piattaforme", piattaformaRepository.findAll());
+			model.addAttribute("generi", genereRepository.findAll());
+			model.addAttribute("sviluppatori", sviluppatoreRepository.findAll());
+			model.addAttribute("editors", editorRepository.findAll());
 			return "gioco/updateGiocoPage.html";
 		}
 		gioco.setIDGioco(id);
