@@ -39,6 +39,7 @@
 						<th scope="col">Genre</th>
 						<th scope="col">Developer</th>
 						<th scope="col">Editor</th>
+						<th scope="col">Rating</th>
 						<th>Edit</th>
 						<th>Delete</th>
 					</tr>
@@ -54,6 +55,7 @@
 						<td th:text="${gioco.genere.nomeGenere}"></td>
 						<td th:text="${gioco.sviluppatore.nomeSviluppatore}"></td>
 						<td th:text="${gioco.editor.nomeEditor}"></td>
+						<td th:text="${gioco.getAvgRating()}"></td>
 						<td><a th:href="@{/giochi/edit/{id}(id=${gioco.IDGioco})}">Edit</a></td>
 
 						<td><a th:href="@{/giochi/delete/{id}(id=${gioco.IDGioco})}">Delete</a></td>

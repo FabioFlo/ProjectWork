@@ -58,6 +58,8 @@ public class Utente {
 	
 	@OneToMany(mappedBy= "utente")
 	List<GiocoRating> ratings;
+	
+	
 	public Utente() {
 		
 	}

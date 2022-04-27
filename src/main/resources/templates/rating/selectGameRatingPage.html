@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Select Game To BE RATED</title>
+</head>
+	<body>
+		<div th:switch="${giochi}">
+	<!-- Se la mia lista è nulla mostro questo caso
+	 al momento ritorna null al primo reload della pagina
+	 quindi mostro un link per il reload nell'href, dandogli il @GetMapping di questa pagina
+	 -->
+		<h1 th:case="null">
+			Await to be inserted, please <a href="/giochi/listGioco">Reload</a>
+		</h1>
+		<!-- Se la mia lista non è nulla entro in questo caso -->
+		<div th:case="*">
+		<!-- Scritta Semplice -->
+			<h2>Games</h2>
+			<!-- Stilizzazione dell'oggetto tramite bootstrap, è il motivo per cui è scura -->
+			<table class="table table-dark">
+			<!-- TESTA DELLA TABELLA -->
+				<thead>
+				<!-- NOMI NELLA RIGA DELLA TESTA -->
+					<tr>
+						<th scope="col">Title</th>
+						<th scope="col">Rating</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="gioco : ${giochi}">
+						<td th:text="${gioco.titolo}"></td>
+						<td th:text="${gioco.getAvgRating()}"></td>
+						<td><a th:href="@{/addRating/{idUtente}/gioco/{idGioco}(idUtente = ${sessionIDUtente}, idGioco = ${gioco.IDGioco})">Add Rating</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<p>
+			<a href="/giochi/addGiocoPage">Add a new game</a>
+		</p>
+	</div>
+	</body>
+</html>

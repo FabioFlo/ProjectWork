@@ -32,34 +32,34 @@ public class Gioco
 			sequenceName = "gioco_sequence",
 			allocationSize = 1
 			)
-	
+
 	@GeneratedValue(
 			strategy = GenerationType.SEQUENCE,
 			generator = "gioco_sequence"
 			)
 	private Long IDGioco;
-	
+
 	@Column(name = "titolo")
 	@NotBlank(message = "Titolo Gioco Necessario")
 	private String titolo;
-	
+
 	@Column(name = "dataUscita")	
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate dataUscita;
-	 
+
 	@Column(name = "serie")
 	private String serie; 
-	
+
 	@Column(name = "pegi")
 	@Max(value = 18)
 	@Min(value = 3)
 	private int pegi;
-	
+
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "IDPiattaforma", referencedColumnName = "IDPiattaforma")
 	private Piattaforma piattaforma;
 
-	
+
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "IDGenere", referencedColumnName = "IDGenere")
 	private Genere genere;
@@ -67,17 +67,17 @@ public class Gioco
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "IDSviluppatore", referencedColumnName = "IDSviluppatore")
 	private Sviluppatore sviluppatore;
-	
+
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "IDEditor", referencedColumnName = "IDEditor")
 	private Editor editor;
-	
+
 	@OneToMany(mappedBy= "gioco")
 	List<GiocoRating> ratings;
 	public Gioco() {
-		
+
 	}
-	
+
 	public Gioco(Long iDGioco, @NotBlank(message = "Titolo Gioco Necessario") String titolo, LocalDate dataUscita,
 			String serie, @Max(18) @Min(3) int pegi, Piattaforma piattaforma, Genere genere, Sviluppatore sviluppatore,
 			Editor editor) {
@@ -92,7 +92,7 @@ public class Gioco
 		this.sviluppatore = sviluppatore;
 		this.editor = editor;
 	}
-	
+
 	public Long getIDGioco() {
 		return IDGioco;
 	}
@@ -169,11 +169,21 @@ public class Gioco
 		this.editor = editor;
 	}
 
+	public double getAvgRating() {
+		double avg = 0;
+		if(!ratings.isEmpty()) {
+			for(GiocoRating rating : ratings) {
+				avg += rating.getRating();
+			}
+			return avg/=ratings.size();
+		}
+		return avg;
+	}
 	@Override
 	public String toString() {
 		return "Gioco [IDGioco=" + IDGioco + ", titolo=" + titolo + ", dataUscita=" + dataUscita + ", serie=" + serie
 				+ ", pegi=" + pegi + ", piattaforma=" + piattaforma + ", genere=" + genere + ", sviluppatore="
 				+ sviluppatore + ", editor=" + editor + "]";
 	}
-	
+
 }
