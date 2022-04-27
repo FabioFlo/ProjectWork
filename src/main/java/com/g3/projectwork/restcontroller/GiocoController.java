@@ -1,8 +1,4 @@
-package com.g3.projectwork.controller;
-
-
-
-import java.sql.Date;
+package com.g3.projectwork.restcontroller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.g3.projectwork.entities.Gioco;
 import com.g3.projectwork.repos.GiocoRepository;
-import com.g3.projectwork.utility.GestoreTemplate;
 
 
 // Punto di riferimento per spring per gestire il servizio Rest
@@ -26,7 +21,7 @@ public class GiocoController {
 	//FIXME: SETTARE UN PATH RELATIVO ALLA CARTELLA DELL'APPLICAZIONE E NON RELATIVO AL DISCO
 	String percorsoCartellaViste = "D:\\Marco\\Marco - DRIVE\\JAITA50\\ProjectWork\\ProjectWork\\src\\main\\webapp\\";
 
-	GestoreTemplate gestore = new GestoreTemplate(percorsoCartellaViste);
+	//GestoreTemplate gestore = new GestoreTemplate(percorsoCartellaViste);
 
 	GiocoController(GiocoRepository repository) {
 		giocoRepository = repository;
@@ -46,11 +41,11 @@ public class GiocoController {
 		return ris;
 	}
 
-	@GetMapping("/elencoGiochi")
-	public String getGioco() {
-		getGiochi().iterator().hasNext();
-		return gestore.graficaElenco(getGiochi());
-	}
+//	@GetMapping("/elencoGiochi")
+//	public String getGioco() {
+//		getGiochi().iterator().hasNext();
+//		return gestore.graficaElenco(getGiochi());
+//	}
 
 	//TODO: Graficare gioco ritornato
 	//READ Singolo gioco
@@ -60,20 +55,20 @@ public class GiocoController {
 	}
 	//TODO: foglio html conferma creazione(?)
 	//CREATE gioco
-	@GetMapping("/creaGioco")
-	Gioco createGiocoNuovo( @RequestParam("titolo") String titolo,
-			@RequestParam("dataUscita") Date dataUscita,
-			@RequestParam("IDSviluppatore") Long IDSviluppatore,
-			@RequestParam("IDEditor") Long IDEditor,
-			@RequestParam("IDGenere") Long IDGenere,
-			@RequestParam("IDPiattaforma") Long IDPiattaforma,
-			@RequestParam("pegi") int pegi,
-			@RequestParam("serie") String serie) {
-
-		Gioco giocoNuovo = new Gioco(titolo, dataUscita, serie, pegi, IDPiattaforma, IDGenere, IDSviluppatore, IDEditor);
-		System.out.println(true);
-		return giocoRepository.save(giocoNuovo);
-	}
+//	@GetMapping("/creaGioco")
+//	Gioco createGiocoNuovo( @RequestParam("titolo") String titolo,
+//			@RequestParam("dataUscita") LocalDate dataUscita,
+//			@RequestParam("IDSviluppatore") Long IDSviluppatore,
+//			@RequestParam("IDEditor") Long IDEditor,
+//			@RequestParam("IDGenere") Long IDGenere,
+//			@RequestParam("IDPiattaforma") Long IDPiattaforma,
+//			@RequestParam("pegi") int pegi,
+//			@RequestParam("serie") String serie) {
+//
+//		Gioco giocoNuovo = new Gioco(titolo, dataUscita, serie, pegi, IDPiattaforma, IDGenere, IDSviluppatore, IDEditor);
+//		System.out.println(true);
+//		return giocoRepository.save(giocoNuovo);
+//	}
 
 
 
@@ -117,10 +112,10 @@ public class GiocoController {
 		g.setDataUscita(giocoDTO.getDataUscita());
 		g.setSerie(giocoDTO.getSerie());
 		g.setPegi(giocoDTO.getPegi());
-		g.setIDPiattaforma(giocoDTO.getIDPiattaforma());
-		g.setIDGenere(giocoDTO.getIDGenere());
-		g.setIDSviluppatore(giocoDTO.getIDSviluppatore());
-		g.setIDEditor(giocoDTO.getIDEditor());
+		//g.setIDPiattaforma(giocoDTO.getIDPiattaforma());
+		//g.setIDGenere(giocoDTO.getIDGenere());
+		//g.setIDSviluppatore(giocoDTO.getIDSviluppatore());
+		//g.setIDEditor(giocoDTO.getIDEditor());
 		return giocoRepository.save(g);
 	}
 	// ---------------------------------------------------------------------------

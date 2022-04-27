@@ -1,4 +1,4 @@
-package com.g3.projectwork.controller;
+package com.g3.projectwork.restcontroller;
 
 import java.util.List;
 
