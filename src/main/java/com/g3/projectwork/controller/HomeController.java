@@ -44,6 +44,8 @@ public class HomeController {
 			for (UtenteDTO u : utenteService.getUtenti()) {
 				if (u.getEmailAddress().equals(email) && u.getPword().equals(p)) {
 					session.setAttribute("login", "Ok");
+					session.setAttribute("sessionIDUtente", u.getId());
+					System.out.println(session.getAttribute("sessionIDUtente"));
 				}
 			}
 		}

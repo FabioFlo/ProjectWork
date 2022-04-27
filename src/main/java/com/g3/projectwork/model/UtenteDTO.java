@@ -9,7 +9,8 @@ import java.time.LocalDate;
 // con un altra classe Entity, vada a mandare in output tutti i dati congiunti
 // In questo modo invece si lascia la possibilità mandare in output l'oggetto singolo e ben formattato
 public class UtenteDTO {
-
+	
+	private Long id;
 	private String userName;
 	private String emailAddress;
 	private String pword;
@@ -17,6 +18,12 @@ public class UtenteDTO {
 	private LocalDate dataCompleanno;
 	private LocalDate dataIscrizione;
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	
 	public String getUserName() {
 		return userName;

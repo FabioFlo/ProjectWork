@@ -1,6 +1,7 @@
 package com.g3.projectwork.entities;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
@@ -70,6 +72,8 @@ public class Gioco
 	@JoinColumn(name = "IDEditor", referencedColumnName = "IDEditor")
 	private Editor editor;
 	
+	@OneToMany(mappedBy= "gioco")
+	List<GiocoRating> ratings;
 	public Gioco() {
 		
 	}

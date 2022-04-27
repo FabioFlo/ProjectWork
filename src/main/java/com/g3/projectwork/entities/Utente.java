@@ -1,12 +1,14 @@
 package com.g3.projectwork.entities;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -53,6 +55,9 @@ public class Utente {
 	@Column(name = "dataCompleanno")
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate dataCompleanno;
+	
+	@OneToMany(mappedBy= "utente")
+	List<GiocoRating> ratings;
 	public Utente() {
 		
 	}
