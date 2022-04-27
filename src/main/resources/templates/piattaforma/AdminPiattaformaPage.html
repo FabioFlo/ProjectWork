@@ -27,14 +27,14 @@
 				<tbody>
 					<tr th:each="piattaforma : ${piattaforme}">
 						<td th:text="${piattaforma.nomePiattaforma}"></td>
-						<td><a th:href="@{/piattaforme/edit/{id}(id=${editor.IDEditor})}">Edit</a></td>
-						<td><a th:href="@{/piattaforme/delete/{id}(id=${editor.IDEditor})}">Delete</a></td>
+						<td><a th:href="@{/piattaforme/edit/{id}(id=${piattaforma.IDPiattaforma})}">Edit</a></td>
+						<td><a th:href="@{/piattaforme/delete/{id}(id=${piattaforma.IDPiattaforma})}">Delete</a></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<p>
-			<a href="/addPiattaformaPage">Add a new platform</a>
+			<a href="/piattaforme/addPiattaformaPage">Add a new platform</a>
 		</p>
 	</div>
 </body>

@@ -23,15 +23,13 @@ public class SviluppatoreAdminController {
 	@GetMapping("/listSviluppatore")
 	public String showSviluppatoreList(Model model) {
 		model.addAttribute("sviluppatori", sviluppatoreRepository.findAll());
-		return "AdminSviluppatorePage.html";
-		//TODO: creare AdminSviluppatorePage.html
+		return "sviluppatore/AdminSviluppatorePage.html";
 	}
 	
 	@GetMapping("/addSviluppatorePage")
 	public String showAddSviluppatorePage(Model model) {
 		model.addAttribute("sviluppatore", new Sviluppatore());
-		return "addSviluppatorePage.html";
-		//TODO: creare addSviluppatorePage.html
+		return "sviluppatore/addSviluppatorePage.html";
 	}
 	
 	@PostMapping("/addSviluppatore")
@@ -41,28 +39,26 @@ public class SviluppatoreAdminController {
 			return "addSviluppatorePage.html";
 		}
 		sviluppatoreRepository.save(sviluppatore);
-		return "AdminSviluppatorePage.html";
-		//TODO: AdminSviluppatorePage.html
+		return "sviluppatore/AdminSviluppatorePage.html";
 	}
 	
-	@GetMapping("/sviluppatore/{id}")
+	@GetMapping("/edit/{id}")
 	public String showUpdateForm(@PathVariable("id") Long id, Model model) {
 		Sviluppatore sviluppatore = sviluppatoreRepository.findById(id)
 				.orElseThrow(()-> new IllegalArgumentException("ID " + id + " non valido"));
 		model.addAttribute("sviluppatore", sviluppatore);
-		return "updateSviluppatorePage.html";
-		//TODO: updateSviluppatorePage.html
+		return "sviluppatore/updateSviluppatorePage.html";
 	}
 	
 	@PostMapping("/update/{id}")
 	public String updateSviluppatore(@PathVariable("id") Long id, @Valid Sviluppatore sviluppatore, BindingResult result, Model model) {
 		if(result.hasErrors()) {
 			sviluppatore.setIDSviluppatore(id);
-			return "updateSviluppatorePage.html";
+			return "sviluppatore/updateSviluppatorePage.html";
 		}
 		sviluppatore.setIDSviluppatore(id);
 		sviluppatoreRepository.save(sviluppatore);
-		return "AdminSviluppatorePage.html";
+		return "sviluppatore/AdminSviluppatorePage.html";
 	}
 	
 	@GetMapping("/delete/{id}")
@@ -70,7 +66,6 @@ public class SviluppatoreAdminController {
 		Sviluppatore sviluppatore = sviluppatoreRepository.findById(id)
 				.orElseThrow(()-> new IllegalArgumentException("ID "+ id + " non valido"));
 		sviluppatoreRepository.delete(sviluppatore);
-		return "AdminSviluppatorePage.html";
+		return "sviluppatore/AdminSviluppatorePage.html";
 	}
-	
 }

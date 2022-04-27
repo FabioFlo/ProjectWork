@@ -14,7 +14,7 @@ import javax.validation.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table // TODO: VERIFICARE CHE INSERENDO IL NOME DELLA TABELLA GIA' PRESENTE IN MYSQL IL PERCORSO DEL CRUD VADA A COINCIDERE
+@Table(name = "utente")
 public class Utente {
 	@Id // diciamo inoltre che l'IDUtente è un id
 	@SequenceGenerator(

@@ -17,7 +17,7 @@ import com.g3.projectwork.entities.Utente;
 import com.g3.projectwork.repos.UtenteRepository;
 
 @Controller
-@RequestMapping("/utenti")
+@RequestMapping(path ="/utenti")
 public class UtenteAdminController {
 	@Autowired
 	private UtenteRepository utentiRepository;
