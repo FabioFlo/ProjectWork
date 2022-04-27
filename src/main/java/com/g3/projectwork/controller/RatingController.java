@@ -38,18 +38,26 @@ public class RatingController {
 		model.addAttribute("giocoRating", new GiocoRating());
 		model.addAttribute("giochi", giocoRepository.findAll());
 		model.addAttribute("sessionIDUtente", session.getAttribute("sessionIDUtente"));
+		System.out.println(model.getAttribute("sessionIDUtente" + model.getAttribute("giochi")));
 		return "rating/selectGameRatingPage.html";
 	}
 	
 	//SHOW FORM RECENSIONE
 	@GetMapping("/addRating/{idUtente}/gioco/{idGioco}")
-	public String showRatingForm() {
+	public String showRatingForm(
+			@PathVariable("idUtente") Long idUtente,
+			@PathVariable("idGioco") Long idGioco	) {
 		//MOSTRO IL FORM CON I VALORI DEL GIOCO SELEZIONATO IN SHOW ADD RATING PAGE
 		return "";
 	}
 	@GetMapping("/addRating")
 	public String addDavveroRating() {
-		
+		//TODO: MARCOOOOOOOOOOOOOOOOOOO
+		//Abbiamo risolto, non avevamo importato thymeleaf sul html e abbiamo sbagliato una parentesi
+		//Benvenuto nel mio mondo
+		//Se vuoi provare a fare il metodo di Add, basta che segui le indicazioni per come abbiamo fatto nell'editor controller o nell'utente
+		//Questo addDavvero Rating è quello che deve fare il save tramite la repository
+		//nel metodo prima va mostrato il form per inserire voto e testo della review
 		return "";
 	}
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Select Game To BE RATED</title>
@@ -31,7 +31,7 @@
 					<tr th:each="gioco : ${giochi}">
 						<td th:text="${gioco.titolo}"></td>
 						<td th:text="${gioco.getAvgRating()}"></td>
-						<td><a th:href="@{/addRating/{idUtente}/gioco/{idGioco}(idUtente = ${sessionIDUtente}, idGioco = ${gioco.IDGioco})">Add Rating</a></td>
+						<td><a th:href="@{/addRating/{idUtente}/gioco/{idGioco}(idUtente = ${sessionIDUtente}, idGioco = ${gioco.IDGioco})}">Add Rating</a></td>
 					</tr>
 				</tbody>
 			</table>
