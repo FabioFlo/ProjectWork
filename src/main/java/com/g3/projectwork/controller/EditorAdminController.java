@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.g3.projectwork.entities.Editor;
 import com.g3.projectwork.repos.EditorRepository;
@@ -64,6 +65,7 @@ import com.g3.projectwork.repos.EditorRepository;
  * FILE DA GUARDARE PER VEDERE COME FUNZIONA: AdminEditorPage.html - addEditorPage.html - updateEditorPage.html
  */
 @Controller
+@RequestMapping(path ="/editor")
 public class EditorAdminController {
 	@Autowired
 	private EditorRepository editorRepository; //La repository non ha bisogno di essere cambiata ma non so come introdurre il service
@@ -71,13 +73,13 @@ public class EditorAdminController {
 	@GetMapping("/listEditor")
 	public String showEditorList(Model model) {
 		model.addAttribute("editors", editorRepository.findAll()); //Aggiungo la lista di editors dichiarando attributo editors e riempiendolo con quel che mi torna la repo
-		return "AdminEditorPage.html";
+		return "editor/AdminEditorPage.html";
 	}
 	//SHOW PAGINA ADD EDITOR
 	@GetMapping("/addEditorPage")
 	public String showAddEditorPage(Model model) {
 		model.addAttribute("editor",new Editor()); //Aggiungo un singolo Editor fittizio alla pagina per evitare una null reference
-		return "addEditorPage.html";
+		return "editor/addEditorPage.html";
 	}
 	
 	//CREATE
@@ -85,36 +87,36 @@ public class EditorAdminController {
 	public String addEditor(@Valid Editor editor, BindingResult result, Model model)
 	{
 		if(result.hasErrors()) {
-			return "addEditorPage.html";		//Se ho errori nella mia funzione di create resto sulla stessa pagina, potrebbe essere necessario rivederlo
+			return "editor/addEditorPage.html";		//Se ho errori nella mia funzione di create resto sulla stessa pagina, potrebbe essere necessario rivederlo
 		}
 		editorRepository.save(editor);
-		return "AdminEditorPage.html";
+		return "editor/AdminEditorPage.html";
 	}
 	//SHOW PAGINA UPDATE - 
 	@GetMapping("/edit/{id}")
-	public String showUpdateForm(@PathVariable("id") long id, Model model) {
+	public String showUpdateForm(@PathVariable("id") Long id, Model model) {
 		Editor editor = editorRepository.findById(id)		//Seleziono l'editor nella repo
-				.orElseThrow(()-> new IllegalArgumentException("ID" + id +" non valido"));	//Lancio un eccezione se in qualche modo riesco ad avere un id non valido.
+				.orElseThrow(()-> new IllegalArgumentException("ID " + id +" non valido"));	//Lancio un eccezione se in qualche modo riesco ad avere un id non valido.
 		model.addAttribute("editor", editor);				//Aggiungo il mio editor selezionato al modello 
-		return "updateEditorPage.html";						//Vado alla pagina di update
+		return "editor/updateEditorPage.html";						//Vado alla pagina di update
 	}
 	//UPDATE
 	@PostMapping("/update/{id}")
-	public String updateEditor(@PathVariable("id") long id, @Valid Editor editor, BindingResult result, Model model) {
+	public String updateEditor(@PathVariable("id") Long id, @Valid Editor editor, BindingResult result, Model model) {
 		if(result.hasErrors()) {
 			editor.setIDEditor(id);				//Resetto l'id per ricaricare la pagina nel caso ci sia un errore durante il load dell'oggetto
-			return "updateEditorPage.html";		//Vedi CREATE
+			return "editor/updateEditorPage.html";		//Vedi CREATE
 		}
 		editor.setIDEditor(id);					//Setto l'id dell'editor a quello che mi è stato passato dal mapping per aggiornare quello corretto
 		editorRepository.save(editor);			//Salvo l'editor 
-		return "AdminEditorPage.html";			//Ritorno alla pagina di listing
+		return "editor/AdminEditorPage.html";			//Ritorno alla pagina di listing
 	}
 	//DELETE
 	@GetMapping("/delete/{id}")
-	public String deleteEditor(@PathVariable("id")long id, Model model) {
+	public String deleteEditor(@PathVariable("id") Long id, Model model) {
 		Editor editor = editorRepository.findById(id)
-				.orElseThrow(()-> new IllegalArgumentException("ID" + id + "non valido"));
+				.orElseThrow(()-> new IllegalArgumentException("ID " + id + "non valido"));
 		editorRepository.delete(editor);		//Vedi update, la navigazione ritorna alla pagina di listing perchè non ho un form da compilare per il delete
-		return "AdminEditorPage.html";
+		return "editor/AdminEditorPage.html";
 	}
 }

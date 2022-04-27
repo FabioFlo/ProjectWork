@@ -16,7 +16,7 @@
 	passo il valore alla funzione specificando che l'oggetto th:object è l'editor passato dal model
 	e che il th:action deve prendere il suo valore di id come id per la funzione di update
 	Vedi Add per chiarimenti-->
-	<form action="#" th:action="@{/update/{id}(id=${editor.IDEditor})}"
+	<form action="#" th:action="@{/editor/update/{id}(id=${editor.IDEditor})}"
 		th:object="${editor}" method="post">
 		<label for="NomeEditor">Name</label> <input type="text"
 			th:field="*{nomeEditor}" id="nomeEditor" placeholder="NomeEditor">

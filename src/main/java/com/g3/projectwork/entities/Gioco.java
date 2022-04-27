@@ -1,12 +1,15 @@
 package com.g3.projectwork.entities;
 
-import java.lang.annotation.Repeatable;
 import java.time.LocalDate;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
@@ -50,65 +53,42 @@ public class Gioco
 	@Min(value = 3)
 	private int pegi;
 	
-	@Column(name = "IDPiattaforma")
-	private Long IDPiattaforma;
+	@ManyToOne(cascade = CascadeType.REFRESH)
+	@JoinColumn(name = "IDPiattaforma", referencedColumnName = "IDPiattaforma")
+	private Piattaforma piattaforma;
+
 	
-	@Column(name = "IDGenere")
-	private Long IDGenere;
+	@ManyToOne(cascade = CascadeType.REFRESH)
+	@JoinColumn(name = "IDGenere", referencedColumnName = "IDGenere")
+	private Genere genere;
+
+	@ManyToOne(cascade = CascadeType.REFRESH)
+	@JoinColumn(name = "IDSviluppatore", referencedColumnName = "IDSviluppatore")
+	private Sviluppatore sviluppatore;
 	
-	@Column(name = "IDSviluppatore")
-	private Long IDSviluppatore;
-	
-	@Column(name = "IDEditor")
-	private Long IDEditor;
+	@ManyToOne(cascade = CascadeType.REFRESH)
+	@JoinColumn(name = "IDEditor", referencedColumnName = "IDEditor")
+	private Editor editor;
 	
 	public Gioco() {
 		
 	}
-
+	
 	public Gioco(Long iDGioco, @NotBlank(message = "Titolo Gioco Necessario") String titolo, LocalDate dataUscita,
-			String serie, @Min(3) @Max(18) int pegi, Long iDPiattaforma, Long iDGenere, Long iDSviluppatore,
-			Long iDEditor) {
+			String serie, @Max(18) @Min(3) int pegi, Piattaforma piattaforma, Genere genere, Sviluppatore sviluppatore,
+			Editor editor) {
 		super();
 		IDGioco = iDGioco;
 		this.titolo = titolo;
 		this.dataUscita = dataUscita;
 		this.serie = serie;
 		this.pegi = pegi;
-		IDPiattaforma = iDPiattaforma;
-		IDGenere = iDGenere;
-		IDSviluppatore = iDSviluppatore;
-		IDEditor = iDEditor;
+		this.piattaforma = piattaforma;
+		this.genere = genere;
+		this.sviluppatore = sviluppatore;
+		this.editor = editor;
 	}
-
-
-
-	public Gioco(Long iDGioco, @NotBlank(message = "Titolo Gioco Necessario") String titolo, LocalDate dataUscita,
-			String serie, Long iDPiattaforma, Long iDGenere, Long iDSviluppatore, Long iDEditor) {
-		super();
-		IDGioco = iDGioco;
-		this.titolo = titolo;
-		this.dataUscita = dataUscita;
-		this.serie = serie;
-		IDPiattaforma = iDPiattaforma;
-		IDGenere = iDGenere;
-		IDSviluppatore = iDSviluppatore;
-		IDEditor = iDEditor;
-	}
-
-	public Gioco(@NotBlank(message = "Titolo Gioco Necessario") String titolo, LocalDate dataUscita, String serie,
-			@Min(3) @Max(18) int pegi, Long iDPiattaforma, Long iDGenere, Long iDSviluppatore, Long iDEditor) {
-		super();
-		this.titolo = titolo;
-		this.dataUscita = dataUscita;
-		this.serie = serie;
-		this.pegi = pegi;
-		IDPiattaforma = iDPiattaforma;
-		IDGenere = iDGenere;
-		IDSviluppatore = iDSviluppatore;
-		IDEditor = iDEditor;
-	}
-
+	
 	public Long getIDGioco() {
 		return IDGioco;
 	}
@@ -145,55 +125,51 @@ public class Gioco
 		return pegi;
 	}
 
-
 	public void setPegi(int pegi) {
 		this.pegi = pegi;
 	}
 
-	public Long getIDPiattaforma() {
-		return IDPiattaforma;
+	public Piattaforma getPiattaforma() {
+		return piattaforma;
 	}
 
-	public void setIDPiattaforma(Long iDPiattaforma) {
-		IDPiattaforma = iDPiattaforma;
+	public void setPiattaforma(Piattaforma piattaforma) {
+		this.piattaforma = piattaforma;
 	}
 
-	public Long getIDGenere() {
-		return IDGenere;
+	public Genere getGenere() {
+		return genere;
 	}
 
-	public void setIDGenere(Long iDGenere) {
-		IDGenere = iDGenere;
+	public void setGenere(Genere genere) {
+		this.genere = genere;
 	}
 
-	public Long getIDSviluppatore() {
-		return IDSviluppatore;
+	public Sviluppatore getSviluppatore() {
+		return sviluppatore;
 	}
 
-	public void setIDSviluppatore(Long iDSviluppatore) {
-		IDSviluppatore = iDSviluppatore;
+	public void setSviluppatore(Sviluppatore sviluppatore) {
+		this.sviluppatore = sviluppatore;
 	}
 
-	public Long getIDEditor() {
-		return IDEditor;
+	public Editor getEditor() {
+		return editor;
 	}
 
-	public void setIDEditor(Long iDEditor) {
-		IDEditor = iDEditor;
+	public void setEditor(Editor editor) {
+		this.editor = editor;
+	}
+
+	public void assignEditor(Editor editor) {
+		this.editor = editor;
 	}
 
 	@Override
 	public String toString() {
-		return super.toString() +
-				"IDGioco: "        + IDGioco        + "\n" +
-				"Titolo: "         + titolo         + "\n" +
-				"Data di Uscita: " + dataUscita     + "\n" +
-				"Serie: "          + serie          + "\n" +
-				"pegi: "           + pegi           + "\n" +
-				"IDPiattaforma: "  + IDPiattaforma  + "\n" +
-				"IDGenere: "       + IDGenere       + "\n" +
-				"IDSviluppatore: " + IDSviluppatore + "\n" +
-				"IDEditor: "       + IDEditor       + "\n";
+		return "Gioco [IDGioco=" + IDGioco + ", titolo=" + titolo + ", dataUscita=" + dataUscita + ", serie=" + serie
+				+ ", pegi=" + pegi + ", piattaforma=" + piattaforma + ", genere=" + genere + ", sviluppatore="
+				+ sviluppatore + ", editor=" + editor + "]";
 	}
-
+	
 }

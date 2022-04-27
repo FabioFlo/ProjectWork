@@ -1,15 +1,18 @@
 package com.g3.projectwork.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table (name ="piattaforma")
 public class Piattaforma
 {
 	@Id
@@ -24,8 +27,12 @@ public class Piattaforma
 			)
 	
 	private Long IDPiattaforma;
-	 @Column(unique = true)
+	@Column(unique = true)
 	private String nomePiattaforma;
+	
+	@OneToMany(mappedBy="piattaforma")
+	private List<Gioco> giochi;
+	
 	public Piattaforma() {
 		
 	}
