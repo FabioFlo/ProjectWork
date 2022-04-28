@@ -143,45 +143,23 @@ label {
 				<div class="row row-cols-md-5 g-4">
 					<div class="col" th:each="gioco : ${giochi}">
 						<div class="card">
-							<div class="card-body">
-								<h3 class="card-title" th:text="${gioco.titolo}"></h3>
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item">Release Date: <a class="card-text" th:text="${gioco.dataUscita}"></a></li>
-									<li class="list-group-item">Series: <a class="card-text" th:text="${gioco.serie}"></a></li>
-									<li class="list-group-item">PEGI: <a class="card-text" th:text="${gioco.pegi}"></a></li>
-									<li class="list-group-item">Platform: <a class="card-text"
+							<div class="card-body bg-dark">
+								<h3 class="card-title bg-dark"  th:text="${gioco.titolo}"></h3>
+								
+								<ul class="list-group bg-dark list-group-flush">
+									<li style=color:#fd7e14 class="list-group-item bg-dark">Release Date: <a class="card-text" th:text="${gioco.dataUscita}"></a></li>
+									<li style=color:#fd7e14 class="list-group-item bg-dark">Series: <a class="card-text" th:text="${gioco.serie}"></a></li>
+									<li style=color:#fd7e14 class="list-group-item bg-dark">PEGI: <a class="card-text" th:text="${gioco.pegi}"></a></li>
+									<li style=color:#fd7e14 class="list-group-item bg-dark">Platform: <a class="card-text"
 										th:text="${gioco.piattaforma.nomePiattaforma}"></a></li>
-									<li class="list-group-item">Genre: <a class="card-text"
+									<li style=color:#fd7e14 class="list-group-item bg-dark">Genre: <a class="card-text"
 										th:text="${gioco.genere.nomeGenere}"></a></li>
-									<li class="list-group-item">Developer: <a class="card-text"
+									<li style=color:#fd7e14 class="list-group-item bg-dark">Developer: <a class="card-text"
 										th:text="${gioco.sviluppatore.nomeSviluppatore}"></a></li>
-									<li class="list-group-item">Editor: <a class="card-text"
+									<li style=color:#fd7e14 class="list-group-item bg-dark">Editor: <a class="card-text"
 										th:text="${gioco.editor.nomeEditor}"></a></li>
-									<li class="list-group-item">Rating: <a class="card-text" th:text="${gioco.getAvgRating()}"></a></li>
+									<li style=color:#fd7e14 class="list-group-item bg-dark">Rating: <a class="card-text" th:text="${gioco.getAvgRating()}"></a></li>
 								</ul>
-							<!--  	
-								<div>
-									PEGI: <a class="card-text" th:text="${gioco.pegi}">PEGI:</a>
-								</div>
-								<div>
-									Platform: <a class="card-text"
-										th:text="${gioco.piattaforma.nomePiattaforma}">Platform:</a>
-								</div>
-								<div>
-									Genre: <a class="card-text"
-										th:text="${gioco.genere.nomeGenere}">Genre:</a>
-								</div>
-								<div>
-									Developer: <a class="card-text"
-										th:text="${gioco.sviluppatore.nomeSviluppatore}">Developer:</a>
-								</div>
-								<div>
-									Editor: <a class="card-text"
-										th:text="${gioco.editor.nomeEditor}">Editor:</a>
-								</div>
-								<div>
-									Rating: <a class="card-text" th:text="${gioco.getAvgRating()}">Rating:</a>
-								</div>-->
 
 								<a th:href="@{/giochi/edit/{id}(id=${gioco.IDGioco})}">Edit</a>
 								<a th:href="@{/giochi/delete/{id}(id=${gioco.IDGioco})}">Delete</a>
