@@ -175,7 +175,7 @@ public class Gioco
 			for(GiocoRating rating : ratings) {
 				avg += rating.getRating();
 			}
-			return avg/=ratings.size();
+			avg/=ratings.size();
 		}
 		return avg;
 	}

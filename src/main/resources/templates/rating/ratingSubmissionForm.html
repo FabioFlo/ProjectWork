@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>RatingSubmissionForm</title>
+</head>
+<body>
+	<h2 id="fh2">Facci sapere che ne pensi</h2>
+
+	<form id="feedback" action="#" th:action = "@{/ratings/saveRating/{idUtente}/gioco/{idGioco}(idUtente = ${giocoRating.utente.getIDUtente()}, idGioco = ${giocoRating.gioco.getIDGioco()})}" th:object = ${giocoRating} method= "post">
+	
+		<div class="pinfo">Rate the game.</div>
+
+		<div class="form-group">
+			<div class="col-md-4 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-heart"></i></span>
+					<select class="form-control" id="rate" th:field=*{rating} name= "rating">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="pinfo">Write your feedback.</div>
+		<div class="form-group">
+			<div class="col-md-4 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+					<textarea th:field = *{reviewText} name = "reviewText" class="form-control" id="review" rows="3"></textarea>
+
+				</div>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</body>
+</html>
