@@ -1,0 +1,40 @@
+*
+{
+	margin: 0;
+	padding: 0;
+}
+body
+{	
+	font-family: sans-serif;
+	background-image: linear-gradient(to right, #3b1b72, #3b1b72);
+}
+#nav-bar
+{
+	position: sticky;
+	top: 0;
+	z-index: 10;
+}
+.navbar
+{
+	background-image: linear-gradient(to right, #6f42c1, #fd7e14);
+	padding: 0 !important;
+}
+.navbar.brand img
+{
+	height: auto;
+	padding-left: auto;
+}
+.navbar-nav li
+{
+	padding: 0 10px;
+}
+.navbar-nav li a
+{
+	color: #fff !important;
+	font-weight: 600;
+}
+.d-flex input button
+{
+	color:  #fd7e14;
+}
+
