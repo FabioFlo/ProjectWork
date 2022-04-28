@@ -1,14 +1,21 @@
 package com.g3.projectwork.controller;
 
+import java.time.LocalDateTime;
+
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.g3.projectwork.entities.Utente;
 import com.g3.projectwork.model.UtenteDTO;
+import com.g3.projectwork.repos.UtenteRepository;
 import com.g3.projectwork.services.UtenteService;
 
 @Controller
@@ -18,6 +25,8 @@ public class HomeController {
 	private Utente utenteCorrente;
 	@Autowired
 	private UtenteService utenteService;
+	@Autowired
+	private UtenteRepository utenteRepository;
 
 	@GetMapping("/")
 	public String home(HttpSession session) {
@@ -72,22 +81,19 @@ public class HomeController {
 	 * SEZIONE REGISTRAZIONE
 	 */
 	@GetMapping("/formregistrazione")
-	public String formRegistrazione() {
+	public String formRegistrazione(Model model) {
+		model.addAttribute("utente", new Utente());
+		model.addAttribute("localDateNow", LocalDateTime.now());
 		return "formregistrazione.html";
 	}
-
-	// TODO: FINISH THIS
-	@GetMapping("/registrazione")
-	public String signUp(@RequestParam("username") String userName, @RequestParam("email") String email,
-			@RequestParam("password") String password, @RequestParam("checkpassword") String checkPassword,
-			@RequestParam("acceptterms") boolean acceptterms) {
-		if (password.contentEquals(checkPassword) && !(password.isBlank() || password.isEmpty())) {
-			if (acceptterms) {
-				if (!(userName.isBlank() || userName.isEmpty())) {
-
-				}
-			}
+	
+	// TODO: FINISH THIS 
+	@PostMapping("/registrazione")
+	public String signUp(@Valid Utente utente, BindingResult result, Model model) {
+		if(result.hasErrors()) {
+			return "formlogin.html";
 		}
-		return "";
+		utenteRepository.save(utente);
+		return "formlogin.html";
 	}
 }

@@ -17,7 +17,21 @@ body {
 	font-family: sans-serif;
 	background-image: linear-gradient(to right, #3b1b72, #3b1b72);
 }
-
+a
+{
+	color: #fff;
+	font-size: large;
+}
+h4
+{
+	color: #fff;
+	font-size: x-large;
+}
+p
+{
+	color: #fff;
+	font-size: large;
+}
 .container {
 	padding: 30;
 	margin: auto;
@@ -67,19 +81,20 @@ body {
 		<div class="container">
 			<div class="row no-gutters">
 				<div class="col-lg-5">
-					<div class="col-lg-7 px-5 pt-5">
+					<div class="col-lg-7 px-5 pt-5 ">
 						<h1 class="font-weight-bold py-3">
-							<img class="img" width="128" height="128"
+							<img class="img" width="168" height="168"
 								th:src="@{images/NERD.gif}" /> 
 						</h1>
 					</div>
-					<h4>Registra il tuo account</h4>
+					<h4>Email</h4>
 					<form action="/login" method="get" id="form1">
 
 						<!-- Sezione Email -->
 						<input type="email" placeholder="Email-Address"
 							class="form-control" name="email">
-
+						<hr>
+						<h4>Password</h4>
 						<!-- Sezione Password -->
 						<input type="password" placeholder="*********"
 							class="form-control" name="password">
@@ -88,10 +103,9 @@ body {
 					</form>
 
 
-					<!-- Sezione Forgot - Register -->
-					<a href="/formpassdimenticata.html">Forgot password</a>
+					<!-- Register -->
 					<p>
-						Don't have an account? <a href="/formregistrazione.html">Register
+						Don't have an account? <a href="/formregistrazione">Register
 							Here!</a>
 					</p>
 				</div>
