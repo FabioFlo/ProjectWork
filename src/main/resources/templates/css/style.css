@@ -3,6 +3,20 @@
 	margin: 0;
 	padding: 0;
 }
+h2
+{
+	color: #fff;
+	font-size: xx-large;
+}
+p
+{
+	color: #fff;
+	font-size: 5000;
+}
+h1
+{
+	color: #fff;
+}
 body
 {	
 	font-family: sans-serif;
@@ -37,4 +51,13 @@ body
 {
 	color:  #fd7e14;
 }
-
+html {
+                font-family: sans-serif;
+                background-color: #3b1b72;
+                color: #fff;
+            }
+.btn-primary {
+    color: #3b1b72;
+    background-color: #ff8040;
+    border-color: #ff8000;
+}
