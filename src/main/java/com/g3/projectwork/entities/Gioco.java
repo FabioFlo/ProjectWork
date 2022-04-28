@@ -1,6 +1,7 @@
 package com.g3.projectwork.entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -72,8 +73,11 @@ public class Gioco
 	@JoinColumn(name = "IDEditor", referencedColumnName = "IDEditor")
 	private Editor editor;
 
-	@OneToMany(mappedBy= "gioco")
+	@OneToMany(mappedBy= "gioco", cascade = CascadeType.ALL)
 	List<GiocoRating> ratings;
+	
+
+
 	public Gioco() {
 
 	}
@@ -164,7 +168,13 @@ public class Gioco
 	public void setEditor(Editor editor) {
 		this.editor = editor;
 	}
+	public List<GiocoRating> getRatings() {
+		return ratings;
+	}
 
+	public void setRatings(List<GiocoRating> ratings) {
+		this.ratings = ratings;
+	}
 	public void assignEditor(Editor editor) {
 		this.editor = editor;
 	}

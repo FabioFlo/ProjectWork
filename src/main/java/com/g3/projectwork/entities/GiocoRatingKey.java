@@ -14,16 +14,17 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class GiocoRatingKey implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = "IDUtente")
 	Long IDUtente;
 	
 	@Column(name = "IDGioco")
 	Long IDGioco;
-	
 	public GiocoRatingKey() {
-	
+		
 	}
-
+	
 	public GiocoRatingKey(Long iDUtente, Long iDGioco) {
 		super();
 		IDUtente = iDUtente;
@@ -62,5 +63,6 @@ public class GiocoRatingKey implements Serializable{
 		GiocoRatingKey other = (GiocoRatingKey) obj;
 		return Objects.equals(IDGioco, other.IDGioco) && Objects.equals(IDUtente, other.IDUtente);
 	}
+	
 	
 }

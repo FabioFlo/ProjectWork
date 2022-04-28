@@ -5,11 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
+import javax.persistence.Table;
 
 /*
  *  Entity Per La Tabella Effettiva Relazione Gioco Utente
  */
 @Entity
+@Table(name = "RatingGiochi")
 public class GiocoRating {
 	
 	@EmbeddedId
@@ -31,7 +33,13 @@ public class GiocoRating {
 	
 	public GiocoRating() {
 	}
-
+	
+	public GiocoRating(GiocoRatingKey idGiocoRating, Utente utente, Gioco gioco) {
+		IDGiocoRating = idGiocoRating;
+		this.utente = utente;
+		this.gioco = gioco;
+	}
+	
 	public GiocoRating(GiocoRatingKey iDGiocoRating, Utente utente, Gioco gioco, double rating, String reviewText) {
 		super();
 		IDGiocoRating = iDGiocoRating;

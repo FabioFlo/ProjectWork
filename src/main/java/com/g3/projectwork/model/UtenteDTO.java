@@ -1,6 +1,9 @@
 package com.g3.projectwork.model;
 
 import java.time.LocalDate;
+import java.util.List;
+
+import com.g3.projectwork.entities.GiocoRating;
 
 // UtenteDTO (DTO sta per Data Transfert Objects)
 // che contiene gli stessi campi e può essere mandata in output
@@ -17,6 +20,7 @@ public class UtenteDTO {
 	private String bio;
 	private LocalDate dataCompleanno;
 	private LocalDate dataIscrizione;
+	private List<GiocoRating> ratings;
 	
 	public Long getId() {
 		return id;
@@ -63,10 +67,16 @@ public class UtenteDTO {
 	public void setDataIscrizione(LocalDate dataIscrizione) {
 		this.dataIscrizione = dataIscrizione;
 	}
-	
+	public List<GiocoRating> getRatings() {
+		return ratings;
+	}
+	public void setRatings(List<GiocoRating> ratings) {
+		this.ratings = ratings;
+	}
 	@Override
 	public String toString() {
-		return "UtenteDTO [userName=" + userName + ", emailAddress=" + emailAddress + ", pword=" + pword + ", bio="
-				+ bio + ", dataCompleanno=" + dataCompleanno + "]";
+		return "UtenteDTO [id=" + id + ", userName=" + userName + ", emailAddress=" + emailAddress + ", pword=" + pword
+				+ ", bio=" + bio + ", dataCompleanno=" + dataCompleanno + ", dataIscrizione=" + dataIscrizione
+				+ ", ratings=" + ratings + "]";
 	}
 }

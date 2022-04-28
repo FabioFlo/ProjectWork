@@ -1,8 +1,10 @@
 package com.g3.projectwork.entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -56,10 +58,9 @@ public class Utente {
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate dataCompleanno;
 	
-	@OneToMany(mappedBy= "utente")
+	@OneToMany(mappedBy= "utente", cascade = CascadeType.ALL)
 	List<GiocoRating> ratings;
-	
-	
+
 	public Utente() {
 		
 	}
@@ -98,6 +99,7 @@ public class Utente {
 		this.dataIscrizione = dataIscrizione;
 		this.dataCompleanno = dataCompleanno;
 	}
+	
 	public Long getIDUtente() {
 		return IDUtente;
 	}
@@ -140,6 +142,14 @@ public class Utente {
 	public void setDataCompleanno(LocalDate dataCompleanno) {
 		this.dataCompleanno = dataCompleanno;
 	}
+
+	public List<GiocoRating> getRatings() {
+		return ratings;
+	}
+	public void setRatings(List<GiocoRating> ratings) {
+		this.ratings = ratings;
+	}
+	
 	@Override
 	public String toString() {
 		return "Utente [IDUtente=" + IDUtente + ", userName=" + userName + ", emailAddress=" + emailAddress + ", pword="

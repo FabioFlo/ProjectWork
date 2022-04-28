@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.g3.projectwork.entities.Gioco;
 import com.g3.projectwork.entities.GiocoRating;
+import com.g3.projectwork.entities.GiocoRatingKey;
 import com.g3.projectwork.repos.GiocoRatingRepository;
 import com.g3.projectwork.repos.GiocoRepository;
 import com.g3.projectwork.repos.UtenteRepository;
+import com.g3.projectwork.services.GiocoRatingService;
 
 @Controller
 @RequestMapping(path = "/ratings")
@@ -30,6 +32,9 @@ public class RatingController {
 	
 	@Autowired
 	private UtenteRepository utenteRepository;
+	
+	@Autowired
+	private GiocoRatingService giocoService;
 	
 	//SHOW RATING
 	@GetMapping("/listRating")
@@ -45,7 +50,6 @@ public class RatingController {
 		model.addAttribute("giocoRating", new GiocoRating());
 		model.addAttribute("giochi", giocoRepository.findAll());
 		model.addAttribute("sessionIDUtente", session.getAttribute("sessionIDUtente"));
-		System.out.println(model.getAttribute("sessionIDUtente" + model.getAttribute("giochi")));
 		return "rating/selectGameRatingPage.html";
 	}
 	
@@ -55,28 +59,36 @@ public class RatingController {
 			@PathVariable("idUtente") Long idUtente,
 			@PathVariable("idGioco") Long idGioco,
 			Model model) {
-		GiocoRating giocoRating = new GiocoRating();
-		giocoRating.setUtente(utenteRepository.getById(idUtente));
-		giocoRating.setGioco(giocoRepository.getById(idGioco));
+		GiocoRating giocoRating = new GiocoRating(
+					new GiocoRatingKey(idUtente, idGioco),
+					utenteRepository.getById(idUtente),
+					giocoRepository.getById(idGioco)
+					);
+		System.out.println(utenteRepository.getById(idUtente).getUserName() + giocoRepository.getById(idGioco).getTitolo());
+		
+		System.out.println(giocoRating.getIDGiocoRating().getIDGioco() + giocoRating.getIDGiocoRating().getIDUtente());
+		System.out.println("/n" + giocoRating.toString()+"/n");
 		model.addAttribute("giocoRating",giocoRating);
 		return "rating/ratingSubmissionForm.html";
 	}
 	
 	@PostMapping("/saveRating/{idUtente}/gioco/{idGioco}")
-	public String addDavveroRating(@PathVariable("idUtente") Long idUtente,
-									@PathVariable("idGioco") Long idGioco,
-									@Valid GiocoRating giocoRating,
+	public String addDavveroRating(@Valid GiocoRating giocoRating,
 									BindingResult result,
+									@PathVariable("idUtente") Long idUtente,
+									@PathVariable("idGioco") Long idGioco,
 									Model model) {
-		if(result.hasErrors()) {
-			giocoRating.setUtente(utenteRepository.getById(idUtente));
-			giocoRating.setGioco(giocoRepository.getById(idGioco));
-			model.addAttribute("giocoRating",giocoRating);
-			return "rating/ratingSubmissionForm.html";
-		}
-		giocoRating.setUtente(utenteRepository.getById(idUtente));
-		giocoRating.setGioco(giocoRepository.getById(idGioco));
-		ratingRepository.save(giocoRating);
+		System.out.println("Sono entrato nel save");
+		System.out.println(result.getModel());
+//		if(result.hasErrors()) {
+//			model.addAttribute("giocoRating",giocoRating);
+//			return "rating/ratingSubmissionForm.html";
+//		}
+		giocoService.save(
+				utenteRepository.getById(idUtente),
+				giocoRepository.getById(idGioco),
+				giocoRating.getRating(),
+				giocoRating.getReviewText());
 		return "rating/AdminRatingPage.html";
 	}
 }
