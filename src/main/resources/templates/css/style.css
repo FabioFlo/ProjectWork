@@ -3,6 +3,14 @@
 	margin: 0;
 	padding: 0;
 }
+.img
+{
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+		
+}
 h2
 {
 	color: #fff;
