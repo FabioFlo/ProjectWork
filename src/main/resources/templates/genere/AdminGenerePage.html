@@ -84,7 +84,7 @@ label {
 </head>
 <body>
 	<div th:switch="${generi}">
-	<h1 th:case="null">
+	<h1 th:case="null" class = "display-4 text-center">
 		Await to be inserted, please <a href="/generi/listGenere">reload</a>
 	</h1>
 	<div th:case="*">
@@ -124,7 +124,7 @@ label {
 				</div>
 			</nav>
   
-		<h2>Genres</h2>
+		<h2 class = "display-4 text-center">Genres</h2>
 		<table class="table table-dark">
 			<thead>
 					<tr>

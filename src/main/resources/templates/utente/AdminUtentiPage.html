@@ -86,7 +86,7 @@ label {
 </head>
 <body>
 	<div th:switch="${utenti}">
-		<h1 th:case="null">
+		<h1 th:case="null" class = "display-4 text-center">
 			Await to be inserted, please <a href="/utenti/listUtenti">reload</a>
 		</h1>
 		<div th:case="*">
@@ -126,16 +126,16 @@ label {
 				</div>
 			</nav>
   
-			<h2>User</h2>
+			<h2 class = "display-4 text-center">User</h2>
 			<table class="table table-dark">
 				<thead>
 					<tr>
 						<th scope="col">Username</th>
 						<th scope="col">Email</th>
 						<th scope="col">Password</th>
-						<th scope="col">Biografia</th>
-						<th scope="col">Data Iscrizione</th>
-						<th scope="col">Data Compleanno</th>
+						<th scope="col">Bio</th>
+						<th scope="col">Registration Date</th>
+						<th scope="col">Birth Date</th>
 						<th>Edit</th>
 						<th>Delete</th>
 					</tr>

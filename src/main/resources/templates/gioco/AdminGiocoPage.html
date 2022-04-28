@@ -95,7 +95,7 @@ label {
 	 al momento ritorna null al primo reload della pagina
 	 quindi mostro un link per il reload nell'href, dandogli il @GetMapping di questa pagina
 	 -->
-		<h1 th:case="null">
+		<h1 th:case="null" class = "display-4 text-center">
 			Await to be inserted, please <a href="/giochi/listGioco">Reload</a>
 		</h1>
 		<!-- Se la mia lista non è nulla entro in questo caso -->
@@ -137,7 +137,7 @@ label {
 			</nav>
 
 
-			<h2>Games</h2>
+			<h2 class = "display-4 text-center">Games</h2>
 
 			<div class="m-4">
 				<div class="row row-cols-md-5 g-4">

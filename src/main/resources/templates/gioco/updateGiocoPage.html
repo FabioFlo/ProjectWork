@@ -114,7 +114,7 @@ label {
 		</div>
 	</nav>
   
-  	<h2>Update Game here</h2>
+  	<h2 class = "display-4 text-center">Update Game here</h2>
 	<form action="#" th:action="@{/giochi/update/{id}(id=${gioco.IDGioco})}"
 		th:object="${gioco}" method="post">
 		<label for="titolo">Title</label> <input type="text"

@@ -86,7 +86,7 @@ label {
 </head>
 <body>
 	<div th:switch="${piattaforme}">
-		<h1 th:case="null">
+		<h1 th:case="null" class = "display-4 text-center">
 			Await to be inserted, please <a href="/piattaforme/listPiattaforma">reload</a>
 		</h1>
 		<div th:case="*">
@@ -127,7 +127,7 @@ label {
 			</nav>
 
 
-			<h2>Platforms</h2>
+			<h2 class = "display-4 text-center">Platforms</h2>
 			<table class="table table-dark">
 				<thead>
 					<tr>

@@ -89,7 +89,7 @@ label {
 	 al momento ritorna null al primo reload della pagina
 	 quindi mostro un link per il reload nell'href, dandogli il @GetMapping di questa pagina
 	 -->
-		<h1 th:case="null">
+		<h1 th:case="null" class = "display-4 text-center">
 			Await to be inserted, please <a href="/editor/listEditor">reload</a>
 		</h1>
 		<!-- Se la mia lista non è nulla entro in questo caso -->
@@ -130,7 +130,7 @@ label {
 				</div>
 			</nav>
 			
-			<h2>Editors</h2>
+			<h2 class = "display-4 text-center">Editors</h2>
 			<!-- Stilizzazione dell'oggetto tramite bootstrap, è il motivo per cui è scura -->
 			<table class="table table-dark">
 			<!-- TESTA DELLA TABELLA -->
