@@ -69,3 +69,10 @@ html {
     background-color: #ff8040;
     border-color: #ff8000;
 }
+.img {
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+	
+}
