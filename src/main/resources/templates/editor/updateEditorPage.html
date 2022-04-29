@@ -121,7 +121,7 @@ label {
 	<form action="#" th:action="@{/editor/update/{id}(id=${editor.IDEditor})}"
 		th:object="${editor}" method="post">
 		<label for="NomeEditor"></label> <input type="text"
-			th:field="*{nomeEditor}" id="nomeEditor" placeholder="Update Editor">
+			th:field="*{nomeEditor}" id="nomeEditor" placeholder="Update Editor" required>
 		<span th:if="${#fields.hasErrors('nomeEditor')}"
 			th:errors="*{nomeEditor}"></span> <input type="submit"
 			value="Update Editor">

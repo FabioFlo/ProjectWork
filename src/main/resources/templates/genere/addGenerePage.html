@@ -176,7 +176,7 @@ label {
 	<form action="#" th:action="@{/generi/addGenere}" th:object="${genere}"
 		method="post">
 		<label for="nomeGenere"></label> <input type="text"
-			th:field="*{nomeGenere}" id="nomeGenere" placeholder="Genre">
+			th:field="*{nomeGenere}" id="nomeGenere" placeholder="Genre" required>
 		<span th:if="${#fields.hasErrors('nomeGenere')}"
 			th:errors="*{nomeGenere}"></span> <input type="submit"
 			value="Add Genre">

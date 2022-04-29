@@ -177,7 +177,7 @@ label {
 	<form action="#" th:action="@{/piattaforme/addPiattaforma}" th:object="${piattaforma}"
 	method="post">
 	<label for="nomePiattaforma">Name</label> <input type="text"
-	th:field="*{nomePiattaforma}" id="nomePiattaforma" placeholder="NomePiattaforma">
+	th:field="*{nomePiattaforma}" id="nomePiattaforma" placeholder="NomePiattaforma" required>
 	<span th:if="${#fields.hasErrors('nomePiattaforma')}"
 		th:errors="*{nomePiattaforma}"></span> 
 		<input type="submit"

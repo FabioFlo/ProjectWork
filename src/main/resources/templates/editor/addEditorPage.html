@@ -124,7 +124,7 @@ label {
 	<form action="#" th:action="@{/editor/addEditor}" th:object="${editor}"
 		method="post">
 		<label for="nomeEditor"></label> <input type="text"
-			th:field="*{nomeEditor}" id="nomeEditor" placeholder="Editor">
+			th:field="*{nomeEditor}" id="nomeEditor" placeholder="Editor" required>
 		<!-- Se ho un errore non so cosa succede ma qui ho trovato questo modo di inserire, credo sia legato al @NotBlank in Editor Entity -->
 		<span th:if="${#fields.hasErrors('nomeEditor')}"
 			th:errors="*{nomeEditor}"></span>

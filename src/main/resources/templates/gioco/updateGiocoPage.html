@@ -118,7 +118,7 @@ label {
 	<form action="#" th:action="@{/giochi/update/{id}(id=${gioco.IDGioco})}"
 		th:object="${gioco}" method="post">
 		<label for="titolo">Title</label> <input type="text"
-			th:field="*{titolo}" id="titolo" placeholder="Title">
+			th:field="*{titolo}" id="titolo" placeholder="Title" required>
 			<br>
 		<label for="dataUscita">Release Date</label> <input type="date"
 			th:field="*{dataUscita}" id="dataUscita" placeholder="Release Date">
@@ -135,19 +135,19 @@ label {
 			<option value ="18">18</option>			
 		</select>
 		<br>
-		<label for="IDPiattaforma">Platform ID</label> <select th:field = *{piattaforma}>
+		<label for="IDPiattaforma">Platform ID</label> <select th:field = *{piattaforma} required>
 			<option th:each = "piattaforma : ${piattaforme}" th:value= "${piattaforma.IDPiattaforma}" th:text = "${piattaforma.nomePiattaforma}"></option>
 			</select>
 			<br>
-		<label for="IDGenere">Genre ID</label> <select th:field = *{genere}>
+		<label for="IDGenere">Genre ID</label> <select th:field = *{genere} required>
 			<option th:each = "genere : ${generi}" th:value= "${genere.IDGenere}" th:text = "${genere.nomeGenere}"></option>
 			</select>
 			<br>
-		<label for="IDSviluppatore">Developer ID</label> <select th:field = *{sviluppatore}>
+		<label for="IDSviluppatore">Developer ID</label> <select th:field = *{sviluppatore} required>
 			<option th:each = "sviluppatore : ${sviluppatori}" th:value= "${sviluppatore.IDSviluppatore}" th:text = "${sviluppatore.nomeSviluppatore}"></option>
 			</select>
 			<br>
-		<label for="IDEditor">Editor ID</label> <select th:field = *{editor}>
+		<label for="IDEditor">Editor ID</label> <select th:field = *{editor} required>
 			<option th:each = "editor : ${editors}" th:value= "${editor.IDEditor}" th:text = "${editor.nomeEditor}"></option>
 			</select>
 			<br>

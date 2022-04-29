@@ -126,7 +126,7 @@ label {
 	<form action="#" th:action="@{/piattaforme/update/{id}(id=${piattaforma.IDPiattaforma})}"
 		th:object="${piattaforma}" method="post">
 		<label for="NomePiattaforma"></label> <input type="text"
-			th:field="*{nomePiattaforma}" id="nomePiattaforma" placeholder="Update Platform">
+			th:field="*{nomePiattaforma}" id="nomePiattaforma" placeholder="Update Platform" required>
 		<span th:if="${#fields.hasErrors('nomePiattaforma')}"
 			th:errors="*{nomePiattaforma}"></span> <input type="submit"
 			value="Update Piattaforma">

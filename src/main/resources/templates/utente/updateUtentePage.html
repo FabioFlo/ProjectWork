@@ -178,16 +178,16 @@ label {
 	<form action="#" th:action="@{/utenti/update/{id}(id=${utente.IDUtente})}"
 		th:object="${utente}" method="post">
 		<label for="Username">Username</label> <input type="text"
-			th:field="*{userName}" id="Username" placeholder="Username">
+			th:field="*{userName}" id="Username" placeholder="Username" required>
 		<label for="EmailAddress">Email</label> <input type="text"
-			th:field="*{emailAddress}" id="EmailAddress" placeholder="Email">
+			th:field="*{emailAddress}" id="EmailAddress" placeholder="Email" required>
 		<label for="Password">Password</label> <input type="text"
-			th:field="*{pword}" id="Password" placeholder="Password">
+			th:field="*{pword}" id="Password" placeholder="Password" required>
 		<label for="Bio">Bio</label> <input type="text"
 			th:field="*{bio}" id="Bio" placeholder="Bio">
-		<label for="dataIscrizione">Data Iscrizione</label> <input type="date"
+		<label for="dataIscrizione">Registration Date</label> <input type="date"
 			th:field="*{dataIscrizione}" id="dataIscrizione" placeholder="Data Iscrizione">
-		<label for="dataCompleanno">Data Iscrizione</label> <input type="date"
+		<label for="dataCompleanno">Birth Date</label> <input type="date"
 			th:field="*{dataCompleanno}" id="dataCompleanno" placeholder="Data Compleanno">
 		<span th:if="${#fields.hasErrors('userName')}"
 			th:errors="*{userName}"></span> <input type="submit"
