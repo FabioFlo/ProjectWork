@@ -23,12 +23,12 @@ public class SearchController {
 		String redirect = "";
 		//ESCLUDO PAROLE NULLE
 		if(word==null || word.isBlank() || word.isEmpty()) {
-			redirect = "/giochi/listGiochi";
+			redirect = "/giochi/listGioco";
 		}else {
 			//SE HO PAROLE CONTROLLO I GIOCHI
 			List<Gioco> giochi = giocoRepository.findByTitoloContaining(word);
 			if(giochi.isEmpty() || giochi == null) {
-				redirect = "/giochi/listGiochi";
+				redirect = "/giochi/listGioco";
 			} //SE HO I GIOCHI LI ASSEGNO AL MODEL E RICARICO ADMINGIOCOPAGE MA PASSANDOGLI UN MODELLO
 			else {
 				model.addAttribute("giochi", giochi);
