@@ -31,6 +31,9 @@ public class SearchController {
 			//SE HO PAROLE CONTROLLO I GIOCHI
 			List<Gioco> giochi = giocoRepository.findByTitoloContaining(word);
 			List<Gioco> giochiByEditor = giocoRepository.findByEditorContaining(word);
+			List<Gioco> giochiByPiattaforma = giocoRepository.findByPiattaformaContaining(word);
+			List<Gioco> giochiBySviluppatore = giocoRepository.findBySviluppatoreContaining(word);
+			List<Gioco> giochiByGenere = giocoRepository.findByGenereContaining(word);
 			if(giochi.isEmpty() || giochi == null) {
 				System.out.println("LISTA Giochi NULLA O VUOTA");
 				redirect = "redirect:/giochi/listGioco";
@@ -41,9 +44,30 @@ public class SearchController {
 				// redirect = "redirect:/giochi/listGioco";
 			}
 
-
+			
 			if(giochiByEditor.size() != 0 && giochiByEditor != null) {
 				for(Gioco ge : giochiByEditor) {
+					if(!giochi.contains(ge)) {
+						giochi.add(ge);
+					}
+				}
+			}
+			if(giochiByPiattaforma.size() != 0 && giochiByPiattaforma != null) {
+				for(Gioco ge : giochiByPiattaforma) {
+					if(!giochi.contains(ge)) {
+						giochi.add(ge);
+					}
+				}
+			}
+			if(giochiBySviluppatore.size() != 0 && giochiBySviluppatore != null) {
+				for(Gioco ge : giochiBySviluppatore) {
+					if(!giochi.contains(ge)) {
+						giochi.add(ge);
+					}
+				}
+			}
+			if(giochiByGenere.size() != 0 && giochiByGenere != null) {
+				for(Gioco ge : giochiByGenere) {
 					if(!giochi.contains(ge)) {
 						giochi.add(ge);
 					}

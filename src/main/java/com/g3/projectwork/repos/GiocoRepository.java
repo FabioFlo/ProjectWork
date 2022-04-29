@@ -17,4 +17,13 @@ public interface GiocoRepository extends JpaRepository<Gioco, Long>{
 	
 	@Query("select g from Gioco g left join fetch g.editor e where e.nomeEditor like %?1%")
 	List<Gioco> findByEditorContaining(String nomeEditor);
+	
+	@Query("select g from Gioco g left join fetch g.piattaforma p where p.nomePiattaforma like %?1%")
+	List<Gioco> findByPiattaformaContaining(String nomePiattaforma);
+	
+	@Query("select g from Gioco g left join fetch g.sviluppatore s where s.nomeSviluppatore like %?1%")
+	List<Gioco> findBySviluppatoreContaining(String nomeSviluppatore);
+	
+	@Query("select g from Gioco g left join fetch g.genere t where t.nomeGenere like %?1%")
+	List<Gioco> findByGenereContaining(String nomeGenere);
 }
