@@ -14,4 +14,7 @@ import com.g3.projectwork.entities.Gioco;
 public interface GiocoRepository extends JpaRepository<Gioco, Long>{
 	@Query("select g from Gioco g where g.titolo like %?1%")
 	List<Gioco> findByTitoloContaining(String titolo);
+	
+	@Query("select g from Gioco g left join fetch g.editor e where e.nomeEditor like %?1%")
+	List<Gioco> findByEditorContaining(String nomeEditor);
 }

@@ -26,18 +26,35 @@ public class SearchController {
 		if(word==null || word.isBlank() || word.isEmpty()) {
 			System.out.println("PAROLA NULLA O VUOTA");
 			redirect = "redirect:/giochi/listGioco";
-		}else {
+		}else
+		{
 			//SE HO PAROLE CONTROLLO I GIOCHI
 			List<Gioco> giochi = giocoRepository.findByTitoloContaining(word);
+			List<Gioco> giochiByEditor = giocoRepository.findByEditorContaining(word);
 			if(giochi.isEmpty() || giochi == null) {
-				System.out.println("LISTA NULLA O VUOTA");
+				System.out.println("LISTA Giochi NULLA O VUOTA");
 				redirect = "redirect:/giochi/listGioco";
-			} //SE HO I GIOCHI LI ASSEGNO AL MODEL E RICARICO ADMINGIOCOPAGE MA PASSANDOGLI UN MODELLO
-			else {
-				model.addAttribute("giochi", giochi);
-				redirect = "/gioco/AdminGiocoPage.html";
 			}
+			if
+			(giochiByEditor.isEmpty() || giochiByEditor == null){
+				System.out.println("LISTA Editor NULLA O VUOTA");
+				// redirect = "redirect:/giochi/listGioco";
+			}
+
+
+			if(giochiByEditor.size() != 0 && giochiByEditor != null) {
+				for(Gioco ge : giochiByEditor) {
+					if(!giochi.contains(ge)) {
+						giochi.add(ge);
+					}
+				}
+			}
+			System.out.println(giochi.toString()
+					+ giochiByEditor.toString());
+			model.addAttribute("giochi", giochi);
+			redirect = "/gioco/AdminGiocoPage.html";
 		}
 		return redirect;
 	}
 }
+
