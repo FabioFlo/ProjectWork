@@ -87,7 +87,11 @@ label {
 </head>
 <body>
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	
+
+
+
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<div class="container-fluid">
 					<a href="/" class="navbar-brand"><img
 						th:src="@{/images/NERD.gif}" class="img" width="64" height="64" /> </a>
@@ -157,6 +161,16 @@ label {
 							</div>
 						</div>
 						
+						<div>
+							<form action="#" th:action="@{/search/}"  method="get">
+								<label for="search"></label> 
+								<input type="text" th:name="word" placeholder="Search Games">
+								<input type="submit" value="Search">
+							</form>
+						</div>
+						
+						
+						
 					</div>
 					<div class="navbar-nav ms-auto">
 						<a href="/logout" class="nav-item nav-link"> <svg
@@ -171,6 +185,7 @@ label {
 					</div>
 				</div>
 		</nav>
+
   
 	<h2 class = "display-4 text-center">Update Genre here</h2>  
 	<form action="#" th:action="@{/generi/update/{id}(id=${genere.IDGenere})}"

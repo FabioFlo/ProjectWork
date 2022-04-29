@@ -159,6 +159,16 @@ label {
 							</div>
 						</div>
 						
+						<div>
+							<form action="#" th:action="@{/search/}"  method="get">
+								<label for="search"></label> 
+								<input type="text" th:name="word" placeholder="Search Games">
+								<input type="submit" value="Search">
+							</form>
+						</div>
+						
+						
+						
 					</div>
 					<div class="navbar-nav ms-auto">
 						<a href="/logout" class="nav-item nav-link"> <svg
@@ -173,7 +183,7 @@ label {
 					</div>
 				</div>
 		</nav>
-	
+
 	<h2 class = "display-4 text-center">Update User here</h2>
 	<form action="#" th:action="@{/utenti/update/{id}(id=${utente.IDUtente})}"
 		th:object="${utente}" method="post">

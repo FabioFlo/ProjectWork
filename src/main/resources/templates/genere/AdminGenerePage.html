@@ -97,6 +97,10 @@ label {
 			Await to be inserted, please <a href="/generi/listGenere">reload</a>
 		</h1>
 		<div th:case="*">
+			
+
+
+
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<div class="container-fluid">
 					<a href="/" class="navbar-brand"><img
@@ -167,6 +171,16 @@ label {
 							</div>
 						</div>
 						
+						<div>
+							<form action="#" th:action="@{/search/}"  method="get">
+								<label for="search"></label> 
+								<input type="text" th:name="word" placeholder="Search Games">
+								<input type="submit" value="Search">
+							</form>
+						</div>
+						
+						
+						
 					</div>
 					<div class="navbar-nav ms-auto">
 						<a href="/logout" class="nav-item nav-link"> <svg
@@ -181,6 +195,7 @@ label {
 					</div>
 				</div>
 		</nav>
+
 
 		<h2 class="display-4 text-center">Genres</h2>
 		<table class="table table-dark">

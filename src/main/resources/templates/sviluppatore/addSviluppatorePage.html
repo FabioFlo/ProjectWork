@@ -158,6 +158,16 @@ label {
 							</div>
 						</div>
 						
+						<div>
+							<form action="#" th:action="@{/search/}"  method="get">
+								<label for="search"></label> 
+								<input type="text" th:name="word" placeholder="Search Games">
+								<input type="submit" value="Search">
+							</form>
+						</div>
+						
+						
+						
 					</div>
 					<div class="navbar-nav ms-auto">
 						<a href="/logout" class="nav-item nav-link"> <svg
