@@ -91,9 +91,10 @@ public class HomeController {
 	@PostMapping("/registrazione")
 	public String signUp(@Valid Utente utente, BindingResult result, Model model) {
 		if(result.hasErrors()) {
-			return "formlogin.html";
+			return "formregistrazione.html";
 		}
 		utenteRepository.save(utente);
-		return "formlogin.html";
+		return "grazie.html";
 	}
+	
 }

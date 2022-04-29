@@ -8,16 +8,13 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
+	<title>Welcome to NerdPlanet</title>
 <style>
 * {
 	margin: 0;
 	padding: 0;
 }
-.form label
-{
-	color: #fff;
-	font-size: xx-large;
-}
+
 h2 {
 	color: #fff;
 	font-size: xx-large;
@@ -30,7 +27,7 @@ a {
 
 p {
 	color: #fff;
-	font-size: 5000;
+	font-size: xx-large;
 }
 
 h1 {
@@ -104,31 +101,10 @@ label {
 			</div>
 		</div>
 	</nav>
-
-	<h1>Registration</h1>
-	<form action="#" th:action="@{/registrazione}" th:object="${utente}"
-		method="post">
-		<label for="Username">Username</label> <input type="text"
-			th:field="*{userName}" id="userName" placeholder="Username" required>
-		<br> <label for="emailAddress">Email</label> <input type="email"
-			th:field="*{emailAddress}" id="emailAddress" placeholder="Email"
-			required> <br> <label for="pword">Password</label> <input
-			type="password" th:field="*{pword}" id="pword" placeholder="Password"
-			required> <br> <label for="bio">Bio</label> <input
-			type="text" th:field="*{bio}" id="bio" placeholder="Bio"> <br>
-		<label for="dataIscrizione">Registration Date</label> <input
-			type="date" th:field="*{dataIscrizione}" id="dataIscrizione"
-			placeholder="Data Attuale"> <br> <label
-			for="dataCompleanno">Birth Date</label> <input type="date"
-			th:field="*{dataCompleanno}" id="dataCompleanno"
-			placeholder="Data Compleanno"> <br>
-		<!-- 
-		<span th:if="${#fields.hasErrors('nomeEditor')}"
-			th:errors="*{nomeEditor}"></span> 
-			-->
-
-		<input type="submit" value="Confirm">
-		
-	</form>
+	
+	<h1 class = "display-4 text-center">
+			Welcome to NerdPlanet!  
+			<a href="/formlogin">Login</a>
+		</h1>
 </body>
 </html>
