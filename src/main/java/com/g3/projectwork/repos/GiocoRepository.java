@@ -13,5 +13,5 @@ import com.g3.projectwork.entities.Gioco;
 @Repository
 public interface GiocoRepository extends JpaRepository<Gioco, Long>{
 	@Query("select g from Gioco g where g.titolo like %?1%")
-	List<Gioco> findByTitoloEndsWith(String titolo);
+	List<Gioco> findByTitoloContaining(String titolo);
 }
