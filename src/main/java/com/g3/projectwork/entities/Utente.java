@@ -1,12 +1,16 @@
 package com.g3.projectwork.entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -14,7 +18,7 @@ import javax.validation.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table // TODO: VERIFICARE CHE INSERENDO IL NOME DELLA TABELLA GIA' PRESENTE IN MYSQL IL PERCORSO DEL CRUD VADA A COINCIDERE
+@Table(name = "utente")
 public class Utente {
 	@Id // diciamo inoltre che l'IDUtente è un id
 	@SequenceGenerator(
@@ -53,6 +57,10 @@ public class Utente {
 	@Column(name = "dataCompleanno")
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate dataCompleanno;
+	
+	@OneToMany(mappedBy= "utente", cascade = CascadeType.ALL)
+	List<GiocoRating> ratings;
+
 	public Utente() {
 		
 	}
@@ -91,6 +99,7 @@ public class Utente {
 		this.dataIscrizione = dataIscrizione;
 		this.dataCompleanno = dataCompleanno;
 	}
+	
 	public Long getIDUtente() {
 		return IDUtente;
 	}
@@ -133,6 +142,14 @@ public class Utente {
 	public void setDataCompleanno(LocalDate dataCompleanno) {
 		this.dataCompleanno = dataCompleanno;
 	}
+
+	public List<GiocoRating> getRatings() {
+		return ratings;
+	}
+	public void setRatings(List<GiocoRating> ratings) {
+		this.ratings = ratings;
+	}
+	
 	@Override
 	public String toString() {
 		return "Utente [IDUtente=" + IDUtente + ", userName=" + userName + ", emailAddress=" + emailAddress + ", pword="

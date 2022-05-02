@@ -1,6 +1,8 @@
 package com.g3.projectwork.entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
@@ -30,34 +33,34 @@ public class Gioco
 			sequenceName = "gioco_sequence",
 			allocationSize = 1
 			)
-	
+
 	@GeneratedValue(
 			strategy = GenerationType.SEQUENCE,
 			generator = "gioco_sequence"
 			)
 	private Long IDGioco;
-	
+
 	@Column(name = "titolo")
 	@NotBlank(message = "Titolo Gioco Necessario")
 	private String titolo;
-	
+
 	@Column(name = "dataUscita")	
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate dataUscita;
-	 
+
 	@Column(name = "serie")
 	private String serie; 
-	
+
 	@Column(name = "pegi")
 	@Max(value = 18)
 	@Min(value = 3)
 	private int pegi;
-	
+
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "IDPiattaforma", referencedColumnName = "IDPiattaforma")
 	private Piattaforma piattaforma;
 
-	
+
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "IDGenere", referencedColumnName = "IDGenere")
 	private Genere genere;
@@ -65,15 +68,20 @@ public class Gioco
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "IDSviluppatore", referencedColumnName = "IDSviluppatore")
 	private Sviluppatore sviluppatore;
-	
+
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "IDEditor", referencedColumnName = "IDEditor")
 	private Editor editor;
+
+	@OneToMany(mappedBy= "gioco", cascade = CascadeType.ALL)
+	List<GiocoRating> ratings;
 	
+
+
 	public Gioco() {
-		
+
 	}
-	
+
 	public Gioco(Long iDGioco, @NotBlank(message = "Titolo Gioco Necessario") String titolo, LocalDate dataUscita,
 			String serie, @Max(18) @Min(3) int pegi, Piattaforma piattaforma, Genere genere, Sviluppatore sviluppatore,
 			Editor editor) {
@@ -88,7 +96,7 @@ public class Gioco
 		this.sviluppatore = sviluppatore;
 		this.editor = editor;
 	}
-	
+
 	public Long getIDGioco() {
 		return IDGioco;
 	}
@@ -160,16 +168,32 @@ public class Gioco
 	public void setEditor(Editor editor) {
 		this.editor = editor;
 	}
+	public List<GiocoRating> getRatings() {
+		return ratings;
+	}
 
+	public void setRatings(List<GiocoRating> ratings) {
+		this.ratings = ratings;
+	}
 	public void assignEditor(Editor editor) {
 		this.editor = editor;
 	}
 
+	public double getAvgRating() {
+		double avg = 0;
+		if(!ratings.isEmpty()) {
+			for(GiocoRating rating : ratings) {
+				avg += rating.getRating();
+			}
+			avg/=ratings.size();
+		}
+		return avg;
+	}
 	@Override
 	public String toString() {
 		return "Gioco [IDGioco=" + IDGioco + ", titolo=" + titolo + ", dataUscita=" + dataUscita + ", serie=" + serie
 				+ ", pegi=" + pegi + ", piattaforma=" + piattaforma + ", genere=" + genere + ", sviluppatore="
 				+ sviluppatore + ", editor=" + editor + "]";
 	}
-	
+
 }

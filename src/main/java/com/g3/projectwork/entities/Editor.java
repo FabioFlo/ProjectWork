@@ -36,6 +36,7 @@ public class Editor
 	@JsonIgnore
 	@OneToMany(mappedBy = "editor")
 	private List<Gioco> giochi;
+	
 	public Editor() {
 		
 	}

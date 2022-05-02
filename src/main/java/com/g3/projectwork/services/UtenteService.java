@@ -32,6 +32,7 @@ public class UtenteService {
 		List<UtenteDTO> utenteDTOList = new ArrayList<>();
 		for (Utente utente : utenteList) {
 			UtenteDTO utenteDTO = new UtenteDTO();
+			utenteDTO.setId(utente.getIDUtente());
 			utenteDTO.setBio(utente.getBio());
 			utenteDTO.setDataCompleanno(utente.getDataCompleanno());
 			utenteDTO.setEmailAddress(utente.getEmailAddress());
@@ -48,6 +49,7 @@ public class UtenteService {
 	public UtenteDTO getUtente(Long IDUtente) {
 		Utente utente = utenteRepository.findById(IDUtente).orElseThrow();
 		UtenteDTO utenteDTO = new UtenteDTO();
+		utenteDTO.setId(IDUtente);
 		utenteDTO.setBio(utente.getBio());
 		utenteDTO.setDataCompleanno(utente.getDataCompleanno());
 		utenteDTO.setEmailAddress(utente.getEmailAddress());

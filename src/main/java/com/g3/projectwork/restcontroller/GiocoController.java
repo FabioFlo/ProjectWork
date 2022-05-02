@@ -18,8 +18,8 @@ public class GiocoController {
 	private final GiocoRepository giocoRepository;
 
 	//Percorso Locale views
-	//FIXME: SETTARE UN PATH RELATIVO ALLA CARTELLA DELL'APPLICAZIONE E NON RELATIVO AL DISCO
-	String percorsoCartellaViste = "D:\\Marco\\Marco - DRIVE\\JAITA50\\ProjectWork\\ProjectWork\\src\\main\\webapp\\";
+	
+	//String percorsoCartellaViste = "D:\\Marco\\Marco - DRIVE\\JAITA50\\ProjectWork\\ProjectWork\\src\\main\\webapp\\";
 
 	//GestoreTemplate gestore = new GestoreTemplate(percorsoCartellaViste);
 
@@ -47,13 +47,12 @@ public class GiocoController {
 //		return gestore.graficaElenco(getGiochi());
 //	}
 
-	//TODO: Graficare gioco ritornato
 	//READ Singolo gioco
 	@GetMapping("/singoloGioco")
 	Gioco getGiocoSingolo(@RequestParam("IDGioco") Long IDGioco) {
 		return giocoRepository.findById(IDGioco).orElseThrow();
 	}
-	//TODO: foglio html conferma creazione(?)
+
 	//CREATE gioco
 //	@GetMapping("/creaGioco")
 //	Gioco createGiocoNuovo( @RequestParam("titolo") String titolo,
@@ -82,14 +81,12 @@ public class GiocoController {
 
 
 
-//	//TODO
 //	//UPDATE
 //	@GetMapping("/giocoDaAggiornare")
 //	void updateGioco(@RequestParam("IDGioco") Long IDGioco) {
 //		Gioco giocoDaAggiornare = giocoRepository.findById(IDGioco).orElseThrow();
 //	}
 //
-//	//TODO
 //	//UPDATE
 //	@GetMapping("/aggiornaGioco")
 //	Gioco updateGioco(@PathVariable Long IDGioco, @RequestBody Gioco giocoDTO) {
@@ -122,7 +119,6 @@ public class GiocoController {
 	
 
 
-	//TODO: foglio html conferma eliminazione(?)
 
 	//DELETE
 	@GetMapping("/eliminaGioco")

@@ -9,7 +9,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -65,6 +64,11 @@ public class GiocoAdminController {
 	@PostMapping("/addGioco")
 	public String addGioco(@Valid Gioco gioco, BindingResult result, Model model) {
 		if(result.hasErrors()) {
+			model.addAttribute("gioco", new Gioco());
+			model.addAttribute("piattaforme", piattaformaRepository.findAll());
+			model.addAttribute("generi", genereRepository.findAll());
+			model.addAttribute("sviluppatori", sviluppatoreRepository.findAll());
+			model.addAttribute("editors", editorRepository.findAll());
 			return "gioco/addGiocoPage.html";
 		}
 		giocoRepository.save(gioco);
@@ -90,6 +94,11 @@ public class GiocoAdminController {
 	public String updateGioco(@PathVariable("id") Long id, @Valid Gioco gioco, BindingResult result, Model model) {
 		if(result.hasErrors()) {
 			gioco.setIDGioco(id);
+			model.addAttribute("gioco", new Gioco());
+			model.addAttribute("piattaforme", piattaformaRepository.findAll());
+			model.addAttribute("generi", genereRepository.findAll());
+			model.addAttribute("sviluppatori", sviluppatoreRepository.findAll());
+			model.addAttribute("editors", editorRepository.findAll());
 			return "gioco/updateGiocoPage.html";
 		}
 		gioco.setIDGioco(id);
@@ -124,4 +133,5 @@ public class GiocoAdminController {
 			giocoRepository.save(gioco);
 			return "gioco/RESULTUPDATE.html";
 		}
+		
 }
