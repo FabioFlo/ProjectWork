@@ -13,7 +13,7 @@ import com.g3.projectwork.repos.GiocoRepository;
 
 // Punto di riferimento per spring per gestire il servizio Rest
 @RestController
-public class GiocoController {
+public class GiocoRestController {
 
 	private final GiocoRepository giocoRepository;
 
@@ -23,7 +23,7 @@ public class GiocoController {
 
 	//GestoreTemplate gestore = new GestoreTemplate(percorsoCartellaViste);
 
-	GiocoController(GiocoRepository repository) {
+	GiocoRestController(GiocoRepository repository) {
 		giocoRepository = repository;
 	}
 

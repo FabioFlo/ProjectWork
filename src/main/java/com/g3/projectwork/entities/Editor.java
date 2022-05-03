@@ -10,12 +10,33 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 @Entity
-@Table(name= "editor")
+@Table(
+		name= "editors",
+		uniqueConstraints =	@UniqueConstraint(
+				name = "editName_unique",
+				columnNames = "nomeEditor"
+				))
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@Builder
+@ToString(exclude= "giochi")
 public class Editor 
 {
 	@Id 
@@ -29,52 +50,12 @@ public class Editor
 			generator = "editor_sequence"
 			)
 	private Long IDEditor;
-	 @Column(unique = true, name ="nomeEditor")
-	 @NotBlank(message = "Nome Editor Necessario") //Questa annotazione serve per la validazione degli elementi inseriti, l'istanziazione non prosegue se viene individuato un nome "blank"
+	
+	@Column(name ="nomeEditor")
+	@NotBlank(message = "Nome Editor Necessario")
 	private String nomeEditor;
 	 
 	@JsonIgnore
 	@OneToMany(mappedBy = "editor")
 	private List<Gioco> giochi;
-	
-	public Editor() {
-		
-	}
-	public Editor(Long iDEditor, String nomeEditor) 
-	{
-		super();
-		IDEditor = iDEditor;
-		this.nomeEditor = nomeEditor;
-	}
-
-	public Long getIDEditor() 
-	{
-		return IDEditor;
-	}
-
-
-	public void setIDEditor(Long iDEditor) 
-	{
-		IDEditor = iDEditor;
-	}
-
-
-	public String getNomeEditor()
-	{
-		return nomeEditor;
-	}
-
-
-	public void setNomeEditor(String nomeEditor) 
-	{
-		this.nomeEditor = nomeEditor;
-	}
-
-	@Override
-	public String toString() 
-	{
-		return super.toString() +
-				"IDEditor: "   + IDEditor   + "\n" +
-				"Nome Editor:" + nomeEditor + "\n" ;
-	}
 }

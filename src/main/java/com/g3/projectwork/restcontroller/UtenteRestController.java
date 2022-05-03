@@ -21,7 +21,7 @@ import com.g3.projectwork.utility.GenericResponse;
 
 @RestController
 @RequestMapping(path = "api/utente")
-public class UtenteController {
+public class UtenteRestController {
 	// Per convenzione nel controller non vengono eseguite operazioni o
 	// orchestrazioni
 	// ma deve essere richiamato un singolo metodo della classe UtenteService per

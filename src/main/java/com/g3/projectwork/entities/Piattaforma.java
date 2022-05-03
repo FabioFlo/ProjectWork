@@ -10,9 +10,33 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
-@Table (name ="piattaforma")
+@Table (
+		name ="piattaforme",
+		uniqueConstraints =	@UniqueConstraint(
+				name = "platName_unique",
+				columnNames = "nomePiattaforma"
+				))
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@Builder
+@ToString(exclude= "giochi")
 public class Piattaforma
 {
 	@Id
@@ -25,52 +49,14 @@ public class Piattaforma
 			strategy = GenerationType.SEQUENCE,
 			generator = "piattaforma_sequence"
 			)
-	
+
 	private Long IDPiattaforma;
-	@Column(unique = true)
+
+	@Column(name = "nomePiattaforma")
+	@NotBlank(message = "Nome Piattaforma Necessario")
 	private String nomePiattaforma;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="piattaforma")
 	private List<Gioco> giochi;
-	
-	public Piattaforma() {
-		
-	}
-	public Piattaforma(Long iDPiattaforma, String piattaforma)
-	{
-		super();
-		IDPiattaforma = iDPiattaforma;
-		nomePiattaforma = piattaforma;
-	}
-
-	public Long getIDPiattaforma()
-	{
-		return IDPiattaforma;
-	}
-
-	public void setIDPiattaforma(Long iDPiattaforma) 
-	{
-		IDPiattaforma = iDPiattaforma;
-	}
-
-	public String getNomePiattaforma() 
-	{
-		return nomePiattaforma;
-	}
-
-	public void setNomePiattaforma(String piattaforma)
-	{
-		nomePiattaforma = piattaforma;
-	}
-
-	@Override
-	public String toString()
-	{
-		return super.toString()   +
-				"IDPiattaforma: " + IDPiattaforma + "\n" +
-				"Piattaforma: "   + nomePiattaforma   + "\n" ;
-	}
-	
-	
-	
 }

@@ -1,5 +1,6 @@
 package com.g3.projectwork.entities;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -7,11 +8,22 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
 
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 /*
  *  Entity Per La Tabella Effettiva Relazione Gioco Utente
  */
 @Entity
 @Table(name = "RatingGiochi")
+@Data
+@Getter
+@Setter
+@Builder
+@ToString
 public class GiocoRating {
 	
 	@EmbeddedId
@@ -27,72 +39,9 @@ public class GiocoRating {
 	@JoinColumn(name = "IDGioco")
 	Gioco gioco;
 	
+	@Column(name = "rating")
 	private double rating;
 	
+	@Column(name = "reviewText")
 	private String reviewText;
-	
-	public GiocoRating() {
-	}
-	
-	public GiocoRating(GiocoRatingKey idGiocoRating, Utente utente, Gioco gioco) {
-		IDGiocoRating = idGiocoRating;
-		this.utente = utente;
-		this.gioco = gioco;
-	}
-	
-	public GiocoRating(GiocoRatingKey iDGiocoRating, Utente utente, Gioco gioco, double rating, String reviewText) {
-		super();
-		IDGiocoRating = iDGiocoRating;
-		this.utente = utente;
-		this.gioco = gioco;
-		this.rating = rating;
-		this.reviewText = reviewText;
-	}
-
-	public GiocoRatingKey getIDGiocoRating() {
-		return IDGiocoRating;
-	}
-
-	public void setIDGiocoRating(GiocoRatingKey iDGiocoRating) {
-		IDGiocoRating = iDGiocoRating;
-	}
-
-	public Utente getUtente() {
-		return utente;
-	}
-
-	public void setUtente(Utente utente) {
-		this.utente = utente;
-	}
-
-	public Gioco getGioco() {
-		return gioco;
-	}
-
-	public void setGioco(Gioco gioco) {
-		this.gioco = gioco;
-	}
-
-	public double getRating() {
-		return rating;
-	}
-
-	public void setRating(double rating) {
-		this.rating = rating;
-	}
-
-	public String getReviewText() {
-		return reviewText;
-	}
-
-	public void setReviewText(String reviewText) {
-		this.reviewText = reviewText;
-	}
-
-	@Override
-	public String toString() {
-		return "GiocoRating [IDGiocoRating=" + IDGiocoRating + ", utente=" + utente + ", gioco=" + gioco + ", rating="
-				+ rating + ", reviewText=" + reviewText + "]";
-	}
-
 }

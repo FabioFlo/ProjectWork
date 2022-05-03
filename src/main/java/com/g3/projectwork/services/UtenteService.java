@@ -15,9 +15,9 @@ import com.g3.projectwork.utility.GenericResponse;
 @Service
 public class UtenteService {
 // In questa classe vengono effettuate le operazioni e le logiche dei metodi CRUD 
-	// o di qualcunque altro metodo necessario nella classe UtenteController.
+	// o di qualcunque altro metodo necessario nella classe UtenteRestController.
 	// NOTA BENE: i metodi devono essere public per poter essere visibili e
-	// richiamati nella classe UtenteController.
+	// richiamati nella classe UtenteRestController.
 	@Autowired
 	private UtenteRepository utenteRepository;
 

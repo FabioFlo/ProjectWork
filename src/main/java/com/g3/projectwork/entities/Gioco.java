@@ -20,9 +20,24 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 
 @Entity 
-@Table(name = "gioco") 
+@Table(name = "giochi")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@Builder
+@ToString
 public class Gioco 
 {
 
@@ -75,109 +90,6 @@ public class Gioco
 
 	@OneToMany(mappedBy= "gioco", cascade = CascadeType.ALL)
 	List<GiocoRating> ratings;
-	
-
-
-	public Gioco() {
-
-	}
-
-	public Gioco(Long iDGioco, @NotBlank(message = "Titolo Gioco Necessario") String titolo, LocalDate dataUscita,
-			String serie, @Max(18) @Min(3) int pegi, Piattaforma piattaforma, Genere genere, Sviluppatore sviluppatore,
-			Editor editor) {
-		super();
-		IDGioco = iDGioco;
-		this.titolo = titolo;
-		this.dataUscita = dataUscita;
-		this.serie = serie;
-		this.pegi = pegi;
-		this.piattaforma = piattaforma;
-		this.genere = genere;
-		this.sviluppatore = sviluppatore;
-		this.editor = editor;
-	}
-
-	public Long getIDGioco() {
-		return IDGioco;
-	}
-
-	public void setIDGioco(Long iDGioco) {
-		IDGioco = iDGioco;
-	}
-
-	public String getTitolo() {
-		return titolo;
-	}
-
-	public void setTitolo(String titolo) {
-		this.titolo = titolo;
-	}
-
-	public LocalDate getDataUscita() {
-		return dataUscita;
-	}
-
-	public void setDataUscita(LocalDate dataUscita) {
-		this.dataUscita = dataUscita;
-	}
-
-	public String getSerie() {
-		return serie;
-	}
-
-	public void setSerie(String serie) {
-		this.serie = serie;
-	}
-
-	public int getPegi() {
-		return pegi;
-	}
-
-	public void setPegi(int pegi) {
-		this.pegi = pegi;
-	}
-
-	public Piattaforma getPiattaforma() {
-		return piattaforma;
-	}
-
-	public void setPiattaforma(Piattaforma piattaforma) {
-		this.piattaforma = piattaforma;
-	}
-
-	public Genere getGenere() {
-		return genere;
-	}
-
-	public void setGenere(Genere genere) {
-		this.genere = genere;
-	}
-
-	public Sviluppatore getSviluppatore() {
-		return sviluppatore;
-	}
-
-	public void setSviluppatore(Sviluppatore sviluppatore) {
-		this.sviluppatore = sviluppatore;
-	}
-
-	public Editor getEditor() {
-		return editor;
-	}
-
-	public void setEditor(Editor editor) {
-		this.editor = editor;
-	}
-	public List<GiocoRating> getRatings() {
-		return ratings;
-	}
-
-	public void setRatings(List<GiocoRating> ratings) {
-		this.ratings = ratings;
-	}
-	public void assignEditor(Editor editor) {
-		this.editor = editor;
-	}
 
 	public double getAvgRating() {
 		double avg = 0;
@@ -189,11 +101,4 @@ public class Gioco
 		}
 		return avg;
 	}
-	@Override
-	public String toString() {
-		return "Gioco [IDGioco=" + IDGioco + ", titolo=" + titolo + ", dataUscita=" + dataUscita + ", serie=" + serie
-				+ ", pegi=" + pegi + ", piattaforma=" + piattaforma + ", genere=" + genere + ", sviluppatore="
-				+ sviluppatore + ", editor=" + editor + "]";
-	}
-
 }
