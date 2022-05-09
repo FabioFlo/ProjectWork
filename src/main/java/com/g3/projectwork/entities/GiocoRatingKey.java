@@ -1,68 +1,33 @@
 package com.g3.projectwork.entities;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-/*
- * Composite Key Per I Dati Associati sia al gioco che all'utente
- * Ha Bisogno di Embeddable Serializable HashCode() e Equals()
- */
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Embeddable
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
 public class GiocoRatingKey implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "IDUtente")
-	Long IDUtente;
+	@Builder.Default
+	Long IDUtente = 0L;
 	
 	@Column(name = "IDGioco")
-	Long IDGioco;
-	public GiocoRatingKey() {
-		
-	}
-	
-	public GiocoRatingKey(Long iDUtente, Long iDGioco) {
-		super();
-		IDUtente = iDUtente;
-		IDGioco = iDGioco;
-	}
-
-	public Long getIDUtente() {
-		return IDUtente;
-	}
-
-	public void setIDUtente(Long iDUtente) {
-		IDUtente = iDUtente;
-	}
-
-	public Long getIDGioco() {
-		return IDGioco;
-	}
-
-	public void setIDGioco(Long iDGioco) {
-		IDGioco = iDGioco;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(IDGioco, IDUtente);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		GiocoRatingKey other = (GiocoRatingKey) obj;
-		return Objects.equals(IDGioco, other.IDGioco) && Objects.equals(IDUtente, other.IDUtente);
-	}
-	
-	
+	@Builder.Default
+	Long IDGioco = 0L;
 }

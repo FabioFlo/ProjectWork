@@ -28,9 +28,11 @@ public class GiocoRatingService {
 	public Optional<GiocoRating> getByGiocoRatingKey(GiocoRatingKey giocoRatingKey){
 		return ratingRepository.findById(giocoRatingKey);
 	}
+	
 	public GiocoRating save(Utente utente, Gioco gioco, double rating, String reviewText) {
 		GiocoRating g = GiocoRating.builder().build();
-		g.setIDGiocoRating(new GiocoRatingKey(utente.getIDUtente(), gioco.getIDGioco()));
+		g.setUtente(utente);
+		g.setGioco(gioco);
 		g.setRating(rating);
 		g.setReviewText(reviewText);
 		return ratingRepository.save(g);

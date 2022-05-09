@@ -1,8 +1,7 @@
 package com.g3.projectwork.entities;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -85,7 +84,6 @@ public class Utente {
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate dataCompleanno;
 	
-	@Builder.Default
 	@OneToMany(mappedBy= "utente", cascade = CascadeType.ALL)
-	List<GiocoRating> ratings = new ArrayList<GiocoRating>();
+	private Set<GiocoRating> ratings;
 }

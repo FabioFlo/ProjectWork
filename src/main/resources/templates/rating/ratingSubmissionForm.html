@@ -14,8 +14,8 @@
 
 	<form id="feedback" action="#" th:action = "@{/ratings/saveRating/{idUtente}/gioco/{idGioco}(idUtente = ${giocoRating.utente.getIDUtente()}, idGioco = ${giocoRating.gioco.getIDGioco()})}" th:object = ${giocoRating} method= "post">
 		<div class="pinfo">Rate the game.</div>
-		<input type = "text" th:text = "*{giocoRating.IDGiocoRating}" th:field= "*{IDGiocoRating}(giocoRating.IDGiocoRating)">
-		<div class="form-group">
+		<!-- <input type = "text" th:text = "${giocoRating.IDGiocoRating}" th:field= "*{IDGiocoRating}(IDGiocorating = ${giocoRating.IDGiocoRating})">
+		 --><div class="form-group">
 			<div class="col-md-4 inputGroupContainer">
 				<div class="input-group">
 					<span class="input-group-addon"><i class="fa fa-heart"></i></span>

@@ -10,6 +10,8 @@ import com.g3.projectwork.entities.GiocoRatingKey;
 
 @Repository
 public interface GiocoRatingRepository extends JpaRepository<GiocoRating, GiocoRatingKey>{
+	
 	public List<GiocoRating> findByRating(double rating);
+	
 	
 }

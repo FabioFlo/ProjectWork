@@ -12,13 +12,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.g3.projectwork.entities.Gioco;
 import com.g3.projectwork.entities.GiocoRating;
 import com.g3.projectwork.entities.GiocoRatingKey;
 import com.g3.projectwork.repos.GiocoRatingRepository;
 import com.g3.projectwork.repos.GiocoRepository;
 import com.g3.projectwork.repos.UtenteRepository;
-import com.g3.projectwork.services.GiocoRatingService;
 
 @Controller
 @RequestMapping(path = "/ratings")
@@ -32,9 +30,6 @@ public class RatingController {
 
 	@Autowired
 	private UtenteRepository utenteRepository;
-
-	@Autowired
-	private GiocoRatingService giocoService;
 
 	//SHOW RATING
 	@GetMapping("/listRating")
@@ -77,11 +72,15 @@ public class RatingController {
 			@PathVariable("idUtente") Long idUtente,
 			@PathVariable("idGioco") Long idGioco,
 			Model model) {
-		giocoService.save(
-				utenteRepository.getById(idUtente),
-				giocoRepository.getById(idGioco),
-				giocoRating.getRating(),
-				giocoRating.getReviewText());
+		System.out.println(giocoRating);
+		GiocoRating giocoRated = GiocoRating.builder()
+				.utente(utenteRepository.getById(idUtente))
+				.gioco(giocoRepository.getById(idGioco))
+				.rating(giocoRating.getRating())
+				.reviewText(giocoRating.getReviewText())
+				.build();
+		System.out.println(giocoRated);
+		ratingRepository.save(giocoRated);
 		return "rating/AdminRatingPage.html";
 	}
 }
