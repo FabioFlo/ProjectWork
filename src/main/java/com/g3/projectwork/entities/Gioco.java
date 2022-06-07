@@ -1,6 +1,7 @@
 package com.g3.projectwork.entities;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -88,10 +89,11 @@ public class Gioco
 	private Editor editor;
 
 	@OneToMany(mappedBy= "gioco", cascade = CascadeType.ALL)
-	private Set<GiocoRating> ratings;
+	private List<GiocoRating> ratings;
 
 	public double getAvgRating() {
 		double avg = 0;
+		
 		if(!ratings.isEmpty()) {
 			for(GiocoRating rating : ratings) {
 				avg += rating.getRating();

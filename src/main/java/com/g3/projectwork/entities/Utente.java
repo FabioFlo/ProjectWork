@@ -1,6 +1,7 @@
 package com.g3.projectwork.entities;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -85,5 +86,5 @@ public class Utente {
 	private LocalDate dataCompleanno;
 	
 	@OneToMany(mappedBy= "utente", cascade = CascadeType.ALL)
-	private Set<GiocoRating> ratings;
+	private List<GiocoRating> ratings;
 }
